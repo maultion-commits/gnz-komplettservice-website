@@ -1,7 +1,7 @@
 /* ==========================================================================
    wallfinder.js – "Welches Verfahren passt?" für die Wandreinigung
    Untergrund + Verschmutzung wählen → Empfehlung mit Hinweisen und Übergabe an die Anfrage.
-   Die Empfehlungslogik wird als GNZ.WallAdvice bereitgestellt und vom Pflaster-Check mitgenutzt.
+   Die Empfehlungslogik wird als GNZ.WallAdvice bereitgestellt und vom Zustandscheck mitgenutzt.
    ========================================================================== */
 (function () {
   'use strict';

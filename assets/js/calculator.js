@@ -107,7 +107,7 @@
   var printBtn = qs('[data-print]');
   if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
 
-  /* ---------- Voreinstellungen aus der URL (z. B. vom Pflaster-Check) ---------- */
+  /* ---------- Voreinstellungen aus der URL (z. B. vom Zustandscheck) ---------- */
   var q = new URLSearchParams(window.location.search);
   if (q.get('s')) {
     var wanted = q.get('s').split(',');

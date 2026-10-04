@@ -1,5 +1,5 @@
 /* ==========================================================================
-   check.js – Schnell-Check (Pflaster · Wand · Industrieboden)
+   check.js – Zustandscheck (Pflaster · Wand · Industrieboden)
    Erste Frage wählt das Thema, danach folgt je Thema eine kurze Fragenfolge → Empfehlung
    → Übergabe an Anfrage, Rechner bzw. Planer. Nichts wird gespeichert oder gesendet.
    ========================================================================== */
@@ -107,7 +107,7 @@
         text: 'Betroffene Bereiche werden aufgenommen, Tragschicht und Gefälle korrigiert, die Steine neu verlegt und verfugt.' + (has('wasser') ? ' Steht Wasser oder läuft es zum Haus, prüfen wir zusätzlich das Gefälle.' : ''),
         badge: has('lose') ? 'Zeitnah prüfen' : ''
       });
-      services.push('sanierung');
+      services.push('aufbereitung');
     }
     if (needClean) {
       items.push({ icon: 'spray', title: 'Heißwasser-Hochdruckreinigung', text: 'Entfernt Moos, Algen, Grünbelag sowie Öl- und Schmutzspuren – mit Flächenreiniger und passendem Druck, damit Belag und Fugen geschont werden.' });
@@ -135,7 +135,7 @@
     if (needJoint || needSan) { joint = jointFor(load, a.prio); }
     var uniq = services.filter(function (s, i) { return services.indexOf(s) === i; });
     var names = items.map(function (it) { return it.title.replace(/ \(optional\)/, ''); }).join(', ');
-    var note = 'Pflaster-Check – Fläche: ' + LABELS.flaeche[a.flaeche] + '. Beobachtungen: ' +
+    var note = 'Zustandscheck – Fläche: ' + LABELS.flaeche[a.flaeche] + '. Beobachtungen: ' +
       a.anzeichen.map(function (k) { return LABELS.anzeichen[k]; }).join(', ') + '. Empfehlung: ' + names +
       (joint ? ' (Fugenmaterial: ' + LABELS.material[joint.key] + ')' : '') + '. Wichtig: ' + LABELS.prio[a.prio] + '.';
     var svc = [];
@@ -159,8 +159,8 @@
     var sl = W ? W.SURFACE[sk].label : sk, dl = W ? W.DIRT[dk] : dk;
     return {
       title: 'So reinigen wir diese Wand.', lead: 'Für ' + sl + ' mit „' + dl + '“ empfehlen wir:', items: items, joint: null, services: ['wand'],
-      note: 'Schnell-Check Wand – Untergrund: ' + sl + '; Verschmutzung: ' + dl + '. Empfohlenes Verfahren: ' + a.title + '.',
-      calcHref: 'wandreinigung.html#richtwert', calcLabel: 'Richtwert berechnen'
+      note: 'Zustandscheck Wand – Untergrund: ' + sl + '; Verschmutzung: ' + dl + '. Empfohlenes Verfahren: ' + a.title + '.',
+      calcHref: 'rechner.html#wand', calcLabel: 'Preis schätzen'
     };
   }
 
@@ -196,8 +196,8 @@
     items.push({ icon: 'info', title: 'Zu Ihrem Boden', text: hint });
     return {
       title: 'So bekommen wir den Boden in den Griff.', lead: 'Für ' + LABELS.boden[b] + ' mit „' + LABELS.problem[p] + '“ empfehlen wir:', items: items, joint: null, services: ['industrie'],
-      note: 'Schnell-Check Industrieboden – Boden: ' + LABELS.boden[b] + '; Thema: ' + LABELS.problem[p] + '. Empfehlung: ' + title + '.',
-      calcHref: 'industrieboden.html#richtwert', calcLabel: 'Richtwert berechnen'
+      note: 'Zustandscheck Industrieboden – Boden: ' + LABELS.boden[b] + '; Thema: ' + LABELS.problem[p] + '. Empfehlung: ' + title + '.',
+      calcHref: 'rechner.html#industrie', calcLabel: 'Preis schätzen'
     };
   }
 
@@ -250,7 +250,7 @@
     root.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  // Direkteinstieg per URL, z. B. pflaster-check.html?thema=wand
+  // Direkteinstieg per URL, z. B. zustandscheck.html?thema=wand
   var pre = new URLSearchParams(window.location.search).get('thema');
   if (pre) { var el = form.querySelector('input[name="topic"][value="' + pre + '"]'); if (el) el.checked = true; }
 

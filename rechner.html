@@ -12,10 +12,10 @@
 <link rel="stylesheet" href="assets/css/features.css">
 <script>document.documentElement.className += ' js';</script>
 <!-- /partial:head -->
-<title>Preisrechner – Richtwert für Pflasterreinigung &amp; Fugen | GNZ Immobilien-Komplettservice</title>
-<meta name="description" content="Grober Richtwert in Sekunden: Pflasterreinigung, Neuverfugung und Imprägnierung nach Fläche berechnen. Das verbindliche Festpreis-Angebot folgt nach der kostenlosen Besichtigung.">
+<title>Preisrechner – Richtwert für Pflaster, Wand &amp; Industrieboden | GNZ Immobilien-Komplettservice</title>
+<meta name="description" content="Grober Richtwert in Sekunden: Pflasterreinigung, Neuverfugung, Imprägnierung, Wandreinigung und Industrieboden-Reinigung nach Fläche berechnen. Das verbindliche Festpreis-Angebot folgt nach der kostenlosen Besichtigung.">
 <meta property="og:title" content="Preisrechner – GNZ Immobilien-Komplettservice">
-<meta property="og:description" content="Richtwert für Pflasterreinigung, Neuverfugung und Imprägnierung – unverbindlich und in Sekunden.">
+<meta property="og:description" content="Richtwert für Pflaster, Wand und Industrieboden – unverbindlich und in Sekunden.">
 <!-- seo:start -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://gnz-komplettservice.netlify.app/rechner.html">
@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://gnz-komplettservice.netlify.app/assets/img/photos/pflaster-beton-1600.jpg">
 <!-- seo:end -->
+
 
 </head>
 <body class="page-calc">
@@ -121,7 +122,7 @@
               <p class="mega__label">Schwerpunkte</p>
               <a class="mega__item" href="pflasterreinigung.html"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-spray"/></svg></span><span><strong>Pflasterreinigung</strong><span class="d">Heißwasser-Hochdruck &amp; Flächenreiniger</span></span></a>
               <a class="mega__item" href="spezialfugung.html"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-bricks"/></svg></span><span><strong>Spezialfugung</strong><span class="d">Epoxid-, Drain- &amp; Polymerfugen</span></span></a>
-              <a class="mega__item" href="sanierung.html"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-hammer"/></svg></span><span><strong>Sanierung</strong><span class="d">Pflaster, Unterbau &amp; Außenanlagen</span></span></a>
+              <a class="mega__item" href="pflasteraufbereitung.html"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-hammer"/></svg></span><span><strong>Pflasteraufbereitung</strong><span class="d">Pflaster, Unterbau &amp; Außenanlagen</span></span></a>
             </div>
             <div class="mega__col">
               <p class="mega__label">Gebäudereinigung</p>
@@ -137,7 +138,7 @@
             <div class="mega__foot"><span class="muted">Alles aus einer Hand – ein Ansprechpartner.</span><a class="link-arrow" href="index.html#leistungen">Übersicht <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
           </div>
         </li>
-        <li><a class="nav__link" href="pflaster-check.html">Pflaster-Check</a></li>
+        <li><a class="nav__link" href="zustandscheck.html">Zustandscheck</a></li>
         <li><a class="nav__link" href="rechner.html">Preisrechner</a></li>
         <li><a class="nav__link" href="galerie.html">Galerie</a></li>
         <li><a class="nav__link" href="kontakt.html">Kontakt</a></li>
@@ -161,69 +162,102 @@
         <ol class="crumbs"><li><a href="index.html">Start</a></li><li aria-current="page">Preisrechner</li></ol>
         <p class="eyebrow">Online-Werkzeug</p>
         <h1>Preisrechner</h1>
-        <p class="lead">Ein grober Richtwert in Sekunden – damit Sie wissen, womit Sie rechnen können. Das verbindliche Festpreis-Angebot erhalten Sie nach der kostenlosen Besichtigung.</p>
+        <p class="lead">Ein grober Richtwert in Sekunden – für Pflaster, Wände und Industrieböden. Wählen Sie oben Ihre Kategorie. Das verbindliche Festpreis-Angebot erhalten Sie nach der kostenlosen Besichtigung.</p>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="calc" data-calc>
+      <div class="reveal" data-tabs data-tabs-url style="scroll-margin-top:90px">
+        <p class="eyebrow">Kategorie wählen</p>
+        <div class="tablist" role="tablist" aria-label="Kategorie des Preisrechners">
+          <button class="tab" type="button" role="tab" id="tab-pflaster" data-tab-key="pflaster" aria-controls="panel-pflaster">Pflaster &amp; Fugen</button>
+          <button class="tab" type="button" role="tab" id="tab-wand" data-tab-key="wand" aria-controls="panel-wand">Wandreinigung</button>
+          <button class="tab" type="button" role="tab" id="tab-industrie" data-tab-key="industrie" aria-controls="panel-industrie">Industrieboden</button>
+          <button class="tab" type="button" role="tab" id="tab-weitere" data-tab-key="weitere" aria-controls="panel-weitere">Weitere Leistungen</button>
+        </div>
 
-        <form class="calc__form slab form reveal" novalidate onsubmit="return false">
-          <fieldset class="fs">
-            <legend>Wie groß ist die Fläche?<small>Eine ungefähre Angabe genügt – gemessen wird bei der Besichtigung.</small></legend>
-            <div class="calc__area">
-              <input class="range" type="range" id="calc-range" min="5" max="500" step="5" value="60" aria-label="Fläche in Quadratmetern, Schieberegler">
-              <div class="num">
-                <label class="visually-hidden" for="calc-area">Fläche in Quadratmetern</label>
-                <input class="input" id="calc-area" type="number" inputmode="decimal" min="1" max="5000" step="1" value="60"> <span aria-hidden="true">m²</span>
+        <div role="tabpanel" id="panel-pflaster" aria-labelledby="tab-pflaster" tabindex="0">
+          <div class="calc" data-calc>
+
+            <form class="calc__form slab form reveal" novalidate onsubmit="return false">
+              <fieldset class="fs">
+                <legend>Wie groß ist die Fläche?<small>Eine ungefähre Angabe genügt – gemessen wird bei der Besichtigung.</small></legend>
+                <div class="calc__area">
+                  <input class="range" type="range" id="calc-range" min="5" max="500" step="5" value="60" aria-label="Fläche in Quadratmetern, Schieberegler">
+                  <div class="num">
+                    <label class="visually-hidden" for="calc-area">Fläche in Quadratmetern</label>
+                    <input class="input" id="calc-area" type="number" inputmode="decimal" min="1" max="5000" step="1" value="60"> <span aria-hidden="true">m²</span>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="fs">
+                <legend>Welche Leistungen?</legend>
+                <div class="choice-grid choice-grid--2">
+                  <label class="choice"><input type="checkbox" name="svc" value="reinigung" checked><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-spray"/></svg><span class="choice__text"><strong>Pflasterreinigung</strong><small>Heißwasser-Hochdruck, Flächenreiniger</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="checkbox" name="svc" value="verfugung"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-bricks"/></svg><span class="choice__text"><strong>Neuverfugung</strong><small>Fugen auskratzen &amp; neu verfugen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="checkbox" name="svc" value="impraegnierung"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg><span class="choice__text"><strong>Imprägnierung</strong><small>Schutz vor schneller Neuverschmutzung</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="fs" data-calc-fuge hidden>
+                <legend>Welches Fugenmaterial?<small>Unsicher? Probieren Sie den <a href="spezialfugung.html#konfigurator">Fugen-Konfigurator</a> oder den <a href="zustandscheck.html">Zustandscheck</a>.</small></legend>
+                <div class="choice-grid choice-grid--2">
+                  <label class="choice"><input type="radio" name="mat" value="sand"><span class="choice__body"><span class="choice__text"><strong>Fugensand</strong><small>klassisch, günstig</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="radio" name="mat" value="polymer"><span class="choice__body"><span class="choice__text"><strong>Polymersand</strong><small>Mittelweg, hemmt Unkraut</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="radio" name="mat" value="drain" checked><span class="choice__body"><span class="choice__text"><strong>Drainfugenmörtel</strong><small>stabil &amp; wasserdurchlässig</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="radio" name="mat" value="epoxid"><span class="choice__body"><span class="choice__text"><strong>Epoxid-Fugenmörtel</strong><small>maximal robust</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="fs">
+                <legend>Wie stark ist die Fläche verschmutzt?</legend>
+                <div class="choice-grid">
+                  <label class="choice"><input type="radio" name="zus" value="leicht"><span class="choice__body"><span class="choice__text"><strong>Leicht</strong><small>etwas Staub, wenig Bewuchs</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="radio" name="zus" value="normal" checked><span class="choice__body"><span class="choice__text"><strong>Normal</strong><small>Algen, Grünbelag, Flecken</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                  <label class="choice"><input type="radio" name="zus" value="stark"><span class="choice__body"><span class="choice__text"><strong>Stark</strong><small>dicker Bewuchs, alte Flecken</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+                </div>
+              </fieldset>
+            </form>
+
+            <aside class="calc__result slab slab--dark reveal" style="--d:.1s" aria-label="Ergebnis">
+              <p class="eyebrow">Ihr Richtwert</p>
+              <div aria-live="polite" aria-atomic="true">
+                <p class="calc__total" data-calc-total>–</p>
+                <p class="calc__per" data-calc-per></p>
               </div>
-            </div>
-          </fieldset>
+              <ul class="calc__lines" data-calc-lines></ul>
+              <div data-calc-notes></div>
+              <p class="small muted"><span data-calc-vat>inkl. gesetzlicher MwSt.</span> · unverbindlicher Richtwert, kein Angebot. Der tatsächliche Preis hängt von Zustand, Zugang und Besonderheiten ab.</p>
+              <a class="btn btn--primary btn--block" data-calc-cta href="kontakt.html" style="margin-top:1.2rem;">Festpreis-Angebot anfragen <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+              <button class="btn btn--ghost-light btn--block btn--sm" type="button" data-print style="margin-top:.7rem;"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>Richtwert drucken / als PDF speichern</button>
+            </aside>
 
-          <fieldset class="fs">
-            <legend>Welche Leistungen?</legend>
-            <div class="choice-grid choice-grid--2">
-              <label class="choice"><input type="checkbox" name="svc" value="reinigung" checked><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-spray"/></svg><span class="choice__text"><strong>Pflasterreinigung</strong><small>Heißwasser-Hochdruck, Flächenreiniger</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="checkbox" name="svc" value="verfugung"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-bricks"/></svg><span class="choice__text"><strong>Neuverfugung</strong><small>Fugen auskratzen &amp; neu verfugen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="checkbox" name="svc" value="impraegnierung"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg><span class="choice__text"><strong>Imprägnierung</strong><small>Schutz vor schneller Neuverschmutzung</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs" data-calc-fuge hidden>
-            <legend>Welches Fugenmaterial?<small>Unsicher? Probieren Sie den <a href="spezialfugung.html#konfigurator">Fugen-Konfigurator</a> oder den <a href="pflaster-check.html">Pflaster-Check</a>.</small></legend>
-            <div class="choice-grid choice-grid--2">
-              <label class="choice"><input type="radio" name="mat" value="sand"><span class="choice__body"><span class="choice__text"><strong>Fugensand</strong><small>klassisch, günstig</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="radio" name="mat" value="polymer"><span class="choice__body"><span class="choice__text"><strong>Polymersand</strong><small>Mittelweg, hemmt Unkraut</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="radio" name="mat" value="drain" checked><span class="choice__body"><span class="choice__text"><strong>Drainfugenmörtel</strong><small>stabil &amp; wasserdurchlässig</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="radio" name="mat" value="epoxid"><span class="choice__body"><span class="choice__text"><strong>Epoxid-Fugenmörtel</strong><small>maximal robust</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="fs">
-            <legend>Wie stark ist die Fläche verschmutzt?</legend>
-            <div class="choice-grid">
-              <label class="choice"><input type="radio" name="zus" value="leicht"><span class="choice__body"><span class="choice__text"><strong>Leicht</strong><small>etwas Staub, wenig Bewuchs</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="radio" name="zus" value="normal" checked><span class="choice__body"><span class="choice__text"><strong>Normal</strong><small>Algen, Grünbelag, Flecken</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-              <label class="choice"><input type="radio" name="zus" value="stark"><span class="choice__body"><span class="choice__text"><strong>Stark</strong><small>dicker Bewuchs, alte Flecken</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
-            </div>
-          </fieldset>
-        </form>
-
-        <aside class="calc__result slab slab--dark reveal" style="--d:.1s" aria-label="Ergebnis">
-          <p class="eyebrow">Ihr Richtwert</p>
-          <div aria-live="polite" aria-atomic="true">
-            <p class="calc__total" data-calc-total>–</p>
-            <p class="calc__per" data-calc-per></p>
           </div>
-          <ul class="calc__lines" data-calc-lines></ul>
-          <div data-calc-notes></div>
-          <p class="small muted"><span data-calc-vat>inkl. gesetzlicher MwSt.</span> · unverbindlicher Richtwert, kein Angebot. Der tatsächliche Preis hängt von Zustand, Zugang und Besonderheiten ab.</p>
-          <a class="btn btn--primary btn--block" data-calc-cta href="kontakt.html" style="margin-top:1.2rem;">Festpreis-Angebot anfragen <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-          <button class="btn btn--ghost-light btn--block btn--sm" type="button" data-print style="margin-top:.7rem;"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>Richtwert drucken / als PDF speichern</button>
-        </aside>
+        </div>
 
+        <div role="tabpanel" id="panel-wand" aria-labelledby="tab-wand" tabindex="0" hidden>
+          <p class="muted" style="margin-bottom:1.2rem;">Innenwände, Fliesen und Fassaden – Richtwert nach Fläche, Verschmutzung und Erreichbarkeit. <a href="wandreinigung.html">Mehr zur Wandreinigung</a></p>
+          <div data-minicalc="wand" data-service="wand" data-title="Wandreinigung"></div>
+        </div>
+
+        <div role="tabpanel" id="panel-industrie" aria-labelledby="tab-industrie" tabindex="0" hidden>
+          <p class="muted" style="margin-bottom:1.2rem;">Hallen, Werkstätten und Lager – Richtwert für Unterhalts- und Grundreinigung sowie Entfetten. <a href="industrieboden.html">Mehr zur Industrieboden-Reinigung</a></p>
+          <div data-minicalc="industrie" data-service="industrie" data-title="Industrieboden"></div>
+        </div>
+
+        <div role="tabpanel" id="panel-weitere" aria-labelledby="tab-weitere" tabindex="0" hidden>
+          <p class="muted" style="margin-bottom:1.2rem;">Für diese Leistungen gibt es bewusst keinen Pauschalrechner: Umfang, Zugang und Material schwanken zu stark. Wir sehen es uns kostenlos an und nennen Ihnen einen festen Preis.</p>
+          <div class="cols cols--2">
+            <article class="slab"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-hammer"/></svg></span><h3>Pflasteraufbereitung</h3><p class="small">Aufnehmen, Unterbau richten, neu verlegen: Der Aufwand hängt stark von Zustand und Untergrund ab.</p><p><a class="link-arrow" href="pflasteraufbereitung.html">Zur Leistung <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p></article>
+            <article class="slab"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-boxes"/></svg></span><h3>Räumung, Abriss &amp; Transport</h3><p class="small">Menge, Zugang und Entsorgung bestimmen den Preis – das sehen wir am besten vor Ort.</p><p><a class="link-arrow" href="raeumung-abriss-transport.html">Zur Leistung <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p></article>
+            <article class="slab"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg></span><h3>Gartenservice</h3><p class="small">Einmalig oder regelmäßig: Wir kalkulieren nach Grundstück und gewünschtem Rhythmus.</p><p><a class="link-arrow" href="gartenservice.html">Zur Leistung <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p></article>
+            <article class="slab"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg></span><h3>Hausmeisterservice</h3><p class="small">Pauschale nach Objekt und Leistungsumfang – am besten mit dem Betreuungsplan.</p><p><a class="link-arrow" href="hausmeisterservice.html#plan">Zur Leistung <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></p></article>
+          </div>
+          <p class="row" style="margin-top:1.4rem;"><a class="btn btn--primary" href="kontakt.html">Besichtigung anfragen <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a><button class="btn btn--ghost" type="button" data-open-callback>Rückruf anfordern</button></p>
+        </div>
       </div>
     </div>
   </section>
@@ -239,9 +273,9 @@
         <article class="slab reveal"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg></span><h3>Zustand</h3><p class="small">Dicker Bewuchs, alte Öl- und Rostflecken oder tief sitzender Schmutz erhöhen den Aufwand.</p></article>
         <article class="slab reveal" style="--d:.06s"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-bricks"/></svg></span><h3>Fugenmaterial</h3><p class="small">Von Sand bis Epoxid: Material und Verarbeitung unterscheiden sich deutlich im Preis.</p></article>
         <article class="slab reveal" style="--d:.12s"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg></span><h3>Zugang &amp; Wasser</h3><p class="small">Wasser- und Stromanschluss, Zufahrt und Platz für Geräte beeinflussen die Organisation.</p></article>
-        <article class="slab reveal" style="--d:.18s"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-hammer"/></svg></span><h3>Unterbau</h3><p class="small">Setzungen oder Gefälleprobleme erfordern eine Sanierung – das kann kein Rechner beurteilen.</p></article>
+        <article class="slab reveal" style="--d:.18s"><span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-hammer"/></svg></span><h3>Unterbau</h3><p class="small">Setzungen oder Gefälleprobleme erfordern eine Pflasteraufbereitung – das kann kein Rechner beurteilen.</p></article>
       </div>
-      <div class="note" style="margin-top:1.6rem;"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span><strong>Hinweis:</strong> Alle Angaben sind unverbindliche Richtwerte auf Basis von Erfahrungswerten. Richtwert-Rechner für <a href="wandreinigung.html#richtwert">Wandreinigung</a> und <a href="industrieboden.html#richtwert">Industrieböden</a> finden Sie auf den jeweiligen Leistungsseiten. Räumung, Abriss, Transport sowie Garten- und Hausmeisterleistungen bepreisen wir individuell nach Besichtigung.</span></div>
+      <div class="note" style="margin-top:1.6rem;"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span><strong>Hinweis:</strong> Alle Angaben sind unverbindliche Richtwerte auf Basis von Erfahrungswerten. Für Wandreinigung und Industrieböden wählen Sie oben die passende Kategorie. Räumung, Abriss, Transport sowie Garten- und Hausmeisterleistungen bepreisen wir individuell nach Besichtigung.</span></div>
     </div>
   </section>
 
@@ -251,7 +285,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer__thanks">
-      <p><strong>Danke für Ihren Besuch!</strong> Wir freuen uns auf Ihre Anfrage – ob große Sanierung oder kleine Fuge.</p>
+      <p><strong>Danke für Ihren Besuch!</strong> Wir freuen uns auf Ihre Anfrage – ob große Fläche oder kleine Fuge.</p>
       <p class="row"><button class="btn btn--primary btn--sm" type="button" data-open-callback><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Rückruf anfordern</button><a class="btn btn--ghost-light btn--sm" href="kontakt.html">Angebot anfragen</a></p>
     </div>
     <div class="footer__grid">
@@ -260,7 +294,7 @@
           <svg class="brand__logo" viewBox="0 0 150 58" aria-hidden="true"><use href="#logo-gnz"/></svg>
           <span class="brand__tag"><span>Immobilien-</span><span>Komplettservice</span></span>
         </a>
-        <p>Pflasterreinigung, Spezialfugung und Sanierung – dazu Gebäudereinigung, Räumung, Abriss, Transport und Gartenservice. Alles aus einer Hand – mit hochwertigem, professionellem Equipment.</p>
+        <p>Pflasterreinigung, Spezialfugung und Pflasteraufbereitung – dazu Gebäudereinigung, Räumung, Abriss, Transport und Gartenservice. Alles aus einer Hand – mit hochwertigem, professionellem Equipment.</p>
         <p class="topbar__status" data-open-status data-state="unknown"><span class="dot" aria-hidden="true"></span><span data-open-text>Mo–Fr 07:00–17:00 Uhr erreichbar</span></p>
       </div>
       <nav aria-label="Leistungen">
@@ -268,7 +302,7 @@
         <ul class="footer__list">
           <li><a href="pflasterreinigung.html">Pflasterreinigung</a></li>
           <li><a href="spezialfugung.html">Spezialfugung</a></li>
-          <li><a href="sanierung.html">Sanierung</a></li>
+          <li><a href="pflasteraufbereitung.html">Pflasteraufbereitung</a></li>
           <li><a href="wandreinigung.html">Wandreinigung</a></li>
           <li><a href="industrieboden.html">Industrieboden-Reinigung</a></li>
           <li><a href="raeumung-abriss-transport.html">Räumung, Abriss &amp; Transport</a></li>
@@ -279,7 +313,7 @@
       <nav aria-label="Online-Werkzeuge">
         <h2 class="footer__h">Online-Werkzeuge</h2>
         <ul class="footer__list">
-          <li><a href="pflaster-check.html">Pflaster-Check</a></li>
+          <li><a href="zustandscheck.html">Zustandscheck</a></li>
           <li><a href="rechner.html">Preisrechner</a></li>
           <li><a href="spezialfugung.html#konfigurator">Fugen-Konfigurator</a></li>
           <li><a href="index.html#tipp">Pflege-Tipp des Monats</a></li>
@@ -341,7 +375,7 @@
           <option value="">Bitte wählen …</option>
           <option>Pflasterreinigung</option>
           <option>Spezialfugung</option>
-          <option>Sanierung</option>
+          <option>Pflasteraufbereitung</option>
           <option>Wand- oder Fassadenreinigung</option>
           <option>Industrieboden-Reinigung</option>
           <option>Räumung, Abriss oder Transport</option>
@@ -372,5 +406,7 @@
 <script src="assets/js/callback.js" defer></script>
 <!-- /partial:scripts -->
 <script src="assets/js/calculator.js" defer></script>
+<script src="assets/js/minicalc.js" defer></script>
+<script src="assets/js/tabs.js" defer></script>
 </body>
 </html>

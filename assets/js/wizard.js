@@ -22,7 +22,7 @@
   var last = panels.length - 1;
 
   var SERVICES = {
-    pflaster: 'Pflasterreinigung', fugung: 'Spezialfugung', sanierung: 'Sanierung',
+    pflaster: 'Pflasterreinigung', fugung: 'Spezialfugung', aufbereitung: 'Pflasteraufbereitung',
     raeumung: 'Räumung / Entrümpelung', abriss: 'Abriss / Rückbau', transport: 'Transport / Entsorgung',
     wand: 'Wand- / Fassadenreinigung', industrie: 'Industrieboden-Reinigung',
     garten: 'Gartenservice', hausmeister: 'Hausmeisterservice', beratung: 'Beratung / Sonstiges'

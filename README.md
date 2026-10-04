@@ -1,7 +1,7 @@
 # GNZ Immobilien-Komplettservice – Website
 
 Statische Website (HTML · CSS · JavaScript, **keine Abhängigkeiten, kein Build-Zwang**) für einen Hausmeister- und Gebäudeservice
-mit den Schwerpunkten **Pflasterreinigung**, **Spezialfugung** und **Sanierung** sowie den Zusatzleistungen
+mit den Schwerpunkten **Pflasterreinigung**, **Spezialfugung** und **Pflasteraufbereitung** sowie den Zusatzleistungen
 Räumung, Abriss, Transport, Gartenservice und Hausmeisterservice.
 
 > Gestaltungsidee „Pflasterfläche“: Karten sind Steine, der Abstand dazwischen ist die Fuge – das Logo besteht aus drei Pflastersteinen
@@ -21,17 +21,17 @@ python -m http.server 8805      # oder: npx serve
 | Seite | Inhalt |
 |---|---|
 | `index.html` | Hero mit **Tageszeit-Begrüßung**, Online-Werkzeuge, Schwerpunkte, **Reinigungs-Simulator**, **Vorher/Nachher-Regler**, Fugen-Teaser, Komplettservice, Ablauf, **„Persönlich für Sie da“**, Galerie-Teaser, **Pflege-Tipp des Monats** (mit jährlicher **Kalender-Erinnerung**), FAQ |
-| `pflasterreinigung.html` · `spezialfugung.html` · `sanierung.html` | Schwerpunkte (Spezialfugung mit **Fugen-Konfigurator**, Sanierung mit Entscheidungstabelle) |
+| `pflasterreinigung.html` · `spezialfugung.html` · `pflasteraufbereitung.html` | Schwerpunkte (Spezialfugung mit **Fugen-Konfigurator**, Pflasteraufbereitung mit Entscheidungstabelle) |
 | `wandreinigung.html` · `industrieboden.html` | **Gebäudereinigung**: Wände & Fassaden (mit **Verfahrens-Finder** und **Richtwert-Rechner**), Industrieböden (mit **Richtwert-Rechner**) |
 | `raeumung-abriss-transport.html` · `gartenservice.html` · `hausmeisterservice.html` | Zusatzleistungen (Garten mit **Gartenjahr-Tabs**, Hausmeister mit **Betreuungsplan-Planer**) |
-| `pflaster-check.html` | **Pflaster-Check**: Thema wählen (Pflaster · Wand · Industrieboden), 2–3 Fragen → Empfehlung (bei Pflaster: Reinigung / Neuverfugung / Pflasteraufbereitung + Fugenmaterial) |
-| `rechner.html` | **Preisrechner** (Richtwert-Spanne, druckbar / als PDF speicherbar) |
+| `zustandscheck.html` | **Zustandscheck**: Thema wählen (Pflaster · Wand · Industrieboden), 2–3 Fragen → Empfehlung (bei Pflaster: Reinigung / Neuverfugung / Pflasteraufbereitung + Fugenmaterial) |
+| `rechner.html` | **Preisrechner** mit Kategorie-Reitern (Pflaster & Fugen · Wandreinigung · Industrieboden · Weitere Leistungen); Richtwert-Spanne, druckbar / als PDF speicherbar |
 | `kontakt.html` | **Anfrage-Assistent** (4 Schritte → E-Mail / WhatsApp / Zwischenablage), Kontaktdaten, Live-Status „Jetzt erreichbar“ |
 | `galerie.html` | Galerie mit Filter, Lightbox (Tastatur, Wischen) und Bildnachweis |
 | `impressum.html` · `datenschutz.html` · `404.html` | Rechtstexte (Vorlagen!) und Fehlerseite |
 
 Auf jeder Seite: **Rückruf-Dialog** (Kopfzeile, mobile Leiste, schwebender Button), Scroll-Fortschritt, sanfte Seitenübergänge
-(View Transitions), mobile Aktionsleiste. Die Werkzeuge reichen ihre Ergebnisse untereinander weiter (Pflaster-Check → Rechner → Anfrage) –
+(View Transitions), mobile Aktionsleiste. Die Werkzeuge reichen ihre Ergebnisse untereinander weiter (Zustandscheck → Rechner → Anfrage) –
 per URL-Parameter, ohne Speicherung.
 
 ## Platzhalter ersetzen (wichtig vor dem Livegang)
@@ -89,7 +89,7 @@ Der Ordner ist direkt hostbar (Netlify, GitHub Pages, Shared Hosting). Die Datei
 ## Technik im Überblick
 
 * **`assets/js/paving.js`** – prozedurales Pflaster (Canvas): Reihen-, Läufer- und Fischgrätverband, Stein- und Fugenfarben, verschmutzter und sauberer Zustand. Treibt Simulator, Regler und Konfigurator – ohne Bilddateien.
-* **Pflaster-Check / Rechner / Anfrage-Assistent / Rückruf / Tipps** – reine Browser-Logik; es wird nichts an einen Server gesendet. Anfrage und Rückruf erzeugen einen Text für `mailto:`, WhatsApp (`wa.me`) oder die Zwischenablage.
+* **Zustandscheck / Rechner / Anfrage-Assistent / Rückruf / Tipps** – reine Browser-Logik; es wird nichts an einen Server gesendet. Anfrage und Rückruf erzeugen einen Text für `mailto:`, WhatsApp (`wa.me`) oder die Zwischenablage.
 * **Barrierefreiheit** – Skip-Link, Landmarken, sichtbarer Fokus, Tastaturbedienung (Menü, Tabs, Dialog, Lightbox, Regler), `aria-live` bei Ergebnissen, `prefers-reduced-motion`; die Kontrastwerte der Hauptfarben sind nach WCAG AA geprüft.
 * **Responsiv** – geprüft von 320 bis 1440 px, auch mit breiter Ersatzschrift; mobile Aktionsleiste (Anrufen · Rückruf · WhatsApp · Angebot).
 * **Datenschutz** – keine Cookies, kein Tracking, keine Webfonts vom CDN, keine Drittanbieter-Bilder.

@@ -16,6 +16,6 @@ mkdirSync(OUT, { recursive: true });
 for (const f of readdirSync(ROOT)) {
   if (f.endsWith('.html') && !f.startsWith('_')) cpSync(join(ROOT, f), join(OUT, f));
 }
-for (const f of ['robots.txt', 'sitemap.xml', '_headers']) if (existsSync(join(ROOT, f))) cpSync(join(ROOT, f), join(OUT, f));
+for (const f of ['robots.txt', 'sitemap.xml', '_headers', '_redirects']) if (existsSync(join(ROOT, f))) cpSync(join(ROOT, f), join(OUT, f));
 cpSync(join(ROOT, 'assets'), join(OUT, 'assets'), { recursive: true });
 console.log('dist/ erzeugt:', readdirSync(OUT).join(', '));

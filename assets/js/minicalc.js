@@ -13,6 +13,7 @@
     var C = all[key];
     if (!C) return;
     var service = root.getAttribute('data-service') || 'beratung';
+    var aid = 'mc-area-' + key;
     var title = root.getAttribute('data-title') || 'Leistung';
     var euro = function (n) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(n); };
     var round10 = function (n) { return n < 100 ? Math.round(n) : Math.round(n / 10) * 10; };
@@ -37,7 +38,7 @@
       '<form class="calc__form slab form" novalidate onsubmit="return false">' +
         '<fieldset class="fs"><legend>Wie groß ist die Fläche?<small>Eine ungefähre Angabe genügt – gemessen wird bei der Besichtigung.</small></legend>' +
           '<div class="calc__area"><input class="range" type="range" data-mc-range min="' + C.min + '" max="' + C.max + '" step="' + C.step + '" value="' + C.start + '" aria-label="Fläche in Quadratmetern, Schieberegler">' +
-          '<div class="num"><label class="visually-hidden" for="mc-area">Fläche in Quadratmetern</label><input class="input" id="mc-area" type="number" inputmode="decimal" min="1" max="100000" step="1" value="' + C.start + '"> <span aria-hidden="true">m²</span></div></div></fieldset>' +
+          '<div class="num"><label class="visually-hidden" for="' + aid + '">Fläche in Quadratmetern</label><input class="input" id="' + aid + '" type="number" inputmode="decimal" min="1" max="100000" step="1" value="' + C.start + '"> <span aria-hidden="true">m²</span></div></div></fieldset>' +
         '<fieldset class="fs"><legend>Welche Leistung?</legend><div class="choice-grid choice-grid--2">' + optsHtml + '</div></fieldset>' +
         zugangHtml +
         '<fieldset class="fs"><legend>Wie stark ist die Verschmutzung?</legend><div class="choice-grid">' + zustandHtml + '</div></fieldset>' +
@@ -52,7 +53,7 @@
       '</aside>';
 
     var q = function (s) { return root.querySelector(s); };
-    var area = q('#mc-area'), range = q('[data-mc-range]');
+    var area = q('#' + aid), range = q('[data-mc-range]');
     var access = q('[data-mc-access]');
 
     function render() {

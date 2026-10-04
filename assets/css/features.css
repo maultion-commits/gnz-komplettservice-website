@@ -135,7 +135,7 @@ input[type="range"].range::-moz-range-thumb { width: 1.4rem; height: 1.4rem; bor
 .progress { height: .55rem; overflow: hidden; border-radius: 99px; background: var(--fuge); }
 .progress > span { display: block; width: var(--p, 0%); height: 100%; border-radius: 99px; background: var(--signal); box-shadow: inset 0 -2px 0 var(--signal-d); transition: width .35s ease; }
 
-/* ---------- Pflaster-Check ---------- */
+/* ---------- Zustandscheck ---------- */
 .quiz__top { margin-bottom: 1.5rem; }
 .quiz__step { margin: 0 0 .6rem; font-family: var(--font-display); font-stretch: 85%; font-weight: 700; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; color: var(--klinker); }
 .quiz__q > legend { margin-bottom: 1.1rem; font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); line-height: 1.02; text-transform: uppercase; font-stretch: 75%; }
