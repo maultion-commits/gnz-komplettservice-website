@@ -1,0 +1,4 @@
+# Entwurf: alle Seiten tragen noindex. Nach dem Livegang (config.js: draft:false) und Eintrag der URL in
+# tools/site.json erzeugt "node tools/sync.mjs" hier die Sitemap-Zeile und eine sitemap.xml.
+User-agent: *
+Allow: /

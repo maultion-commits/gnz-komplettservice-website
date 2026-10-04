@@ -1,0 +1,113 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer__thanks">
+      <p><strong>Danke für Ihren Besuch!</strong> Wir freuen uns auf Ihre Anfrage – ob große Sanierung oder kleine Fuge.</p>
+      <p class="row"><button class="btn btn--primary btn--sm" type="button" data-open-callback><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Rückruf anfordern</button><a class="btn btn--ghost-light btn--sm" href="kontakt.html">Angebot anfragen</a></p>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="GNZ Immobilien-Komplettservice – zur Startseite">
+          <svg class="brand__logo" viewBox="0 0 150 58" aria-hidden="true"><use href="#logo-gnz"/></svg>
+          <span class="brand__tag"><span>Immobilien-</span><span>Komplettservice</span></span>
+        </a>
+        <p>Pflasterreinigung, Spezialfugung und Sanierung – dazu Räumung, Abriss, Transport und Gartenservice. Alles aus einer Hand.</p>
+        <p class="topbar__status" data-open-status data-state="unknown"><span class="dot" aria-hidden="true"></span><span data-open-text>Mo–Fr 07:00–17:00 Uhr erreichbar</span></p>
+      </div>
+      <nav aria-label="Leistungen">
+        <h2 class="footer__h">Leistungen</h2>
+        <ul class="footer__list">
+          <li><a href="pflasterreinigung.html">Pflasterreinigung</a></li>
+          <li><a href="spezialfugung.html">Spezialfugung</a></li>
+          <li><a href="sanierung.html">Sanierung</a></li>
+          <li><a href="raeumung-abriss-transport.html">Räumung, Abriss &amp; Transport</a></li>
+          <li><a href="gartenservice.html">Gartenservice</a></li>
+          <li><a href="hausmeisterservice.html">Hausmeisterservice</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Online-Werkzeuge">
+        <h2 class="footer__h">Online-Werkzeuge</h2>
+        <ul class="footer__list">
+          <li><a href="pflaster-check.html">Pflaster-Check</a></li>
+          <li><a href="rechner.html">Preisrechner</a></li>
+          <li><a href="spezialfugung.html#konfigurator">Fugen-Konfigurator</a></li>
+          <li><a href="index.html#tipp">Pflege-Tipp des Monats</a></li>
+          <li><a href="kontakt.html">Anfrage-Assistent</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer__h">Kontakt</h2>
+        <address class="footer__contact">
+          <a data-href="tel" href="tel:+491234567890"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span data-bind="contact.phoneDisplay">01234 567 890</span></a>
+          <a data-href="mail" href="mailto:info@gnz-komplettservice.example"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span data-bind="contact.email">info@gnz-komplettservice.example</span></a>
+          <a data-href="wa" data-show-if="contact.whatsapp" href="#" hidden><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp schreiben</span></a>
+          <span class="row-i"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span><span data-bind="address.street">Musterstraße 12</span><br><span data-bind="address.zip">12345</span> <span data-bind="address.city">Musterstadt</span></span></span>
+          <span class="row-i"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><span data-bind="hoursText">Mo–Fr 07:00–17:00 Uhr</span></span>
+        </address>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> GNZ Immobilien-Komplettservice</p>
+      <ul class="footer__legal">
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="galerie.html#bildnachweis">Bildnachweis</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div class="mobilebar" data-mobilebar aria-label="Schnellaktionen">
+  <a data-href="tel" href="tel:+491234567890"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Anrufen</a>
+  <button type="button" data-open-callback><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Rückruf</button>
+  <a data-href="wa" data-show-if="contact.whatsapp" href="#" hidden><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+  <a class="is-primary" href="kontakt.html"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Angebot</a>
+</div>
+<button class="fab" type="button" data-fab data-open-callback><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Rückruf anfordern</span></button>
+
+<dialog class="callback" data-callback aria-labelledby="cb-title">
+  <form class="callback__box" data-callback-form novalidate onsubmit="return false">
+    <button class="callback__close" type="button" data-callback-close aria-label="Schließen"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+    <p class="eyebrow">Rückruf-Service</p>
+    <h2 id="cb-title">Wir rufen Sie zurück.</h2>
+    <p class="callback__lead">Hinterlassen Sie Ihre Nummer – wir melden uns zum Wunschzeitpunkt. <span class="topbar__status" data-open-status data-state="unknown"><span class="dot" aria-hidden="true"></span><span data-open-text></span></span></p>
+    <div class="form">
+      <div data-field><label class="label" for="cb-tel">Ihre Telefonnummer</label><input class="input" id="cb-tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="z. B. 0171 1234567"></div>
+      <div class="grid-2">
+        <div data-field><label class="label" for="cb-name">Name <span class="opt">(optional)</span></label><input class="input" id="cb-name" autocomplete="name"></div>
+        <div data-field><label class="label" for="cb-when">Wann passt es Ihnen?</label>
+          <select class="select" id="cb-when">
+            <option value="so bald wie möglich">So bald wie möglich</option>
+            <option value="vormittags">Vormittags</option>
+            <option value="mittags">Mittags</option>
+            <option value="nachmittags">Nachmittags</option>
+          </select>
+        </div>
+      </div>
+      <div data-field><label class="label" for="cb-topic">Worum geht es? <span class="opt">(optional)</span></label>
+        <select class="select" id="cb-topic">
+          <option value="">Bitte wählen …</option>
+          <option>Pflasterreinigung</option>
+          <option>Spezialfugung</option>
+          <option>Sanierung</option>
+          <option>Räumung, Abriss oder Transport</option>
+          <option>Gartenservice</option>
+          <option>Hausmeisterservice</option>
+          <option>Etwas anderes</option>
+        </select>
+      </div>
+      <div class="send-actions">
+        <a class="btn btn--primary" data-cb-mail href="#" aria-disabled="true"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Per E-Mail anfordern</a>
+        <a class="btn btn--primary" data-cb-wa href="#" target="_blank" rel="noopener" aria-disabled="true" hidden><svg class="i" aria-hidden="true"><use href="#i-chat"/></svg>Per WhatsApp anfordern</a>
+        <button class="btn btn--ghost" type="button" data-cb-copy aria-disabled="true"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Text kopieren</span></button>
+      </div>
+      <p class="small muted" role="status" data-cb-note>Bitte geben Sie Ihre Telefonnummer an – dann werden die Schaltflächen aktiv.</p>
+      <p class="small muted">Es wird nichts automatisch gesendet: Beim Klick öffnet sich Ihr E-Mail-Programm bzw. WhatsApp mit dem vorbereiteten Text.</p>
+    </div>
+  </form>
+</dialog>
+
+<div class="draft-chip" data-draft-chip hidden>
+  <span><strong>Entwurf:</strong> Kontaktdaten, Preise und Texte sind Platzhalter.</span>
+  <button type="button" aria-label="Hinweis schließen" data-draft-close>×</button>
+</div>

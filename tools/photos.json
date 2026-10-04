@@ -1,0 +1,197 @@
+{
+  "_hinweis": "Zentrale Bildverwaltung. In den HTML-Seiten steht nur data-photo=\"alias\"; tools/sync.mjs erzeugt daraus src/srcset. mode = \"remote\" (Hotlink auf images.unsplash.com) oder \"local\" (Dateien in assets/img/photos/, siehe tools/download-photos.mjs). Alle Bilder: Unsplash-Lizenz (kostenlos, auch kommerziell nutzbar, keine Namensnennung nötig – wird trotzdem fairerweise genannt).",
+  "mode": "local",
+  "photos": {
+    "dampf": {
+      "id": "1677956787377-a0f32c0974af",
+      "by": "Adrian Raudaschl",
+      "page": "e2k842P9a2I",
+      "title": "Reinigung mit Heißwasser-Dampf auf Pflaster"
+    },
+    "flaechenreiniger": {
+      "id": "1718152521364-b9655b8a7926",
+      "by": "The Graphic Space",
+      "page": "gal5jKCgDVo",
+      "title": "Flächenreiniger im Einsatz"
+    },
+    "flaechenreiniger-dunkel": {
+      "id": "1718152421680-d1580e843cc9",
+      "by": "The Graphic Space",
+      "page": "kLZs4yoR0uU",
+      "title": "Flächenreiniger auf nassem Belag"
+    },
+    "flaechenreiniger-nah": {
+      "id": "1718152423993-a29048dbc223",
+      "by": "The Graphic Space",
+      "page": "Dkm11VP5VYk",
+      "title": "Flächenreiniger, Nahaufnahme"
+    },
+    "einfahrt-reinigen": {
+      "id": "1707897283727-31befe824066",
+      "by": "The ProClean Team",
+      "page": "kQHsQmLLV2I",
+      "title": "Einfahrt wird mit Hochdruck gereinigt"
+    },
+    "hochdruck-strahl": {
+      "id": "1610891170442-79392fc76493",
+      "by": "Thatselby",
+      "page": "wPBLuCOLNDg",
+      "title": "Hochdruckstrahl, Nahaufnahme"
+    },
+    "pflaster-granit": {
+      "id": "1743802969597-cded1a7356bd",
+      "by": "William Ducret",
+      "page": "GfC1UjnKLuY",
+      "title": "Graues Kopfsteinpflaster"
+    },
+    "pflaster-beton": {
+      "id": "1501668343018-9234e3ee801a",
+      "by": "Mike Tinnion",
+      "page": "L694DLDEstY",
+      "title": "Graues Betonpflaster"
+    },
+    "pflaster-kopfstein-hell": {
+      "id": "1603621713988-693d692937fd",
+      "by": "Markus Winkler",
+      "page": "_NvRAKAG38I",
+      "title": "Pflasterfläche mit hellen Fugen"
+    },
+    "pflaster-rosa": {
+      "id": "1607708131130-19ed5e90043b",
+      "by": "Shelter",
+      "page": "i83g3jcd1YM",
+      "title": "Betonpflaster im Verband"
+    },
+    "pflaster-moos": {
+      "id": "1762033462515-82ef68f5841d",
+      "by": "Fang Guo",
+      "page": "oRRCugwZoIc",
+      "title": "Kopfsteinpflaster mit Moos in den Fugen"
+    },
+    "pflaster-unkraut": {
+      "id": "1525386643188-225287183f36",
+      "by": "Jack B",
+      "page": "4UjcOpLLQSE",
+      "title": "Pflaster mit Unkraut in den Fugen"
+    },
+    "gartenweg": {
+      "id": "1676984290997-b862e8f0919c",
+      "by": "Emilie",
+      "page": "PCEYPtW3vN8",
+      "title": "Gepflasterter Gartenweg"
+    },
+    "sanierung-entkernt": {
+      "id": "1634586648651-f1fb9ec10d90",
+      "by": "Stefan Lehner",
+      "page": "biRt6RXejuk",
+      "title": "Raum in der Sanierung"
+    },
+    "sanierung-flur": {
+      "id": "1674649207083-281c2517ab49",
+      "by": "Jessica Hearn",
+      "page": "ut6gWxh3oqQ",
+      "title": "Renovierungsarbeiten im Flur"
+    },
+    "sanierung-geruest": {
+      "id": "1593786267440-550458cc882a",
+      "by": "Brett Jordan",
+      "page": "jEP4vsHrSM8",
+      "title": "Haus mit Gerüst"
+    },
+    "sanierung-wand": {
+      "id": "1517581177682-a085bb7ffb15",
+      "by": "Milivoj Kuhar",
+      "page": "Te48TPzdcU8",
+      "title": "Geöffnete Wand bei der Sanierung"
+    },
+    "abriss-haus": {
+      "id": "1677588508537-5106322c2d40",
+      "by": "Vincenzo Cassano",
+      "page": "MqAiJPYEFrs",
+      "title": "Rückbau eines Gebäudes"
+    },
+    "abriss-bagger": {
+      "id": "1582490772231-20eb7d216852",
+      "by": "Francisco Andreotti",
+      "page": "BOxZrWD2-w0",
+      "title": "Bagger bei Rückbauarbeiten"
+    },
+    "raeumung-garage": {
+      "id": "1709831917664-804b57448953",
+      "by": "Adam Winger",
+      "page": "vyOERax9oI4",
+      "title": "Vollgestellte Garage"
+    },
+    "container": {
+      "id": "1704756082548-af7c773aa0ef",
+      "by": "Haberdoedas II",
+      "page": "Zdo-G8_dTeo",
+      "title": "Container mit Bauschutt"
+    },
+    "transporter": {
+      "id": "1601467995997-ac1ae9a8fff4",
+      "by": "Maxim Tolchinskiy",
+      "page": "crHhZlES310",
+      "title": "Transporter vor Gebäude"
+    },
+    "kartons": {
+      "id": "1586781383963-8e66f88077ec",
+      "by": "Markus Spiske",
+      "page": "RWTUrJf7I5w",
+      "title": "Kartons am Transporter"
+    },
+    "hecke-schere": {
+      "id": "1734079692079-172d8243ebd3",
+      "by": "FRAEM GmbH",
+      "page": "rBY5Ek86oOI",
+      "title": "Heckenschnitt mit Heckenschere"
+    },
+    "hecke-formschnitt": {
+      "id": "1543309959-4d45288d1629",
+      "by": "Peter Beukema",
+      "page": "JB-QHEehcwI",
+      "title": "Formschnitt mit der Heckenschere"
+    },
+    "rasen-maeher": {
+      "id": "1748893790747-fc2646924cbe",
+      "by": "Marc Pell",
+      "page": "ZmcOLTGdMbQ",
+      "title": "Rasenmäher auf gepflegtem Rasen"
+    },
+    "rasen-mahd": {
+      "id": "1690068023694-053da714f95f",
+      "by": "Carl Tronders",
+      "page": "YhxOrHGrQQc",
+      "title": "Rasen wird gemäht"
+    },
+    "trimmer": {
+      "id": "1689728318937-17d24bc0a65c",
+      "by": "Michael Kahn",
+      "page": "xWAsrLw_1hk",
+      "title": "Rasentrimmer an der Beetkante"
+    },
+    "werkzeug": {
+      "id": "1676311396794-f14881e9daaa",
+      "by": "Bermix Studio",
+      "page": "iwz5tmhjl7o",
+      "title": "Werkzeug für Kleinreparaturen"
+    },
+    "hof-fegen": {
+      "id": "1719242201346-b34cba7bced9",
+      "by": "Khang Nguyen",
+      "page": "wEJ0MdL9ITY",
+      "title": "Außenbereich wird gekehrt"
+    },
+    "formschnitt-park": {
+      "id": "1668189777890-495c36095340",
+      "by": "Anthony",
+      "page": "Apips1tJsXo",
+      "title": "Formschnitt im Garten"
+    }
+  },
+  "localWidths": [
+    480,
+    960,
+    1600
+  ]
+}

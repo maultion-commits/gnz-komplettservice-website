@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 58" role="img" aria-label="GNZ Immobilien-Komplettservice">
+  <defs>
+    <path id="G" d="M0 0H40V12H12V48H28V42H20V28H40V60H0Z"/>
+    <path id="N" d="M0 60V0H13L27 36V0H40V60H27L13 24V60Z"/>
+    <path id="Z" d="M0 0H38V11L15 48H38V60H0V49L23 12H0Z"/>
+  </defs>
+  <rect x="0" y="4" width="46" height="54" rx="9" fill="#cdc6b6"/><rect x="52" y="4" width="46" height="54" rx="9" fill="#d18a00"/><rect x="104" y="4" width="46" height="54" rx="9" fill="#cdc6b6"/>
+  <rect x="0" y="0" width="46" height="54" rx="9" fill="#f5f2eb"/><rect x="52" y="0" width="46" height="54" rx="9" fill="#ffb400"/><rect x="104" y="0" width="46" height="54" rx="9" fill="#f5f2eb"/>
+  <g fill="#14181c" stroke="#14181c" stroke-width="1.3" stroke-linejoin="round">
+    <use href="#G" transform="translate(12.5 11) scale(.53)"/><use href="#N" transform="translate(64.5 11) scale(.53)"/><use href="#Z" transform="translate(116.5 11) scale(.53)"/>
+  </g>
+</svg>
