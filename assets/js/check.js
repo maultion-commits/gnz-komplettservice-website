@@ -95,19 +95,19 @@
     var a = { flaeche: radioVal('flaeche'), anzeichen: checked('anzeichen'), prio: radioVal('prio') };
     var load = a.flaeche === 'gewerbe' ? 'high' : a.flaeche === 'einfahrt' ? 'mid' : 'low';
     var has = function (k) { return a.anzeichen.indexOf(k) > -1; };
-    var needSan = has('lose') || has('wasser');
+    var needBase = has('lose') || has('wasser');          // Unterbau: nicht Teil unseres Angebots
     var needClean = has('moos') || has('unkraut') || has('flecken') || has('schleier');
     var needJoint = has('unkraut') || has('fugen');
     var unsure = has('unsicher');
+    var wantsProtect = needClean && (a.prio === 'pflege' || a.prio === 'optik' || a.prio === 'haltbar' || has('flecken'));
     var items = [], services = [];
-    if (needSan) {
+    if (needBase) {
       items.push({
-        icon: 'hammer', urgent: has('lose'),
-        title: 'Unterbau prüfen & Pflaster neu verlegen',
-        text: 'Betroffene Bereiche werden aufgenommen, Tragschicht und Gefälle korrigiert, die Steine neu verlegt und verfugt.' + (has('wasser') ? ' Steht Wasser oder läuft es zum Haus, prüfen wir zusätzlich das Gefälle.' : ''),
-        badge: has('lose') ? 'Zeitnah prüfen' : ''
+        icon: 'warn', urgent: has('lose'),
+        title: 'Das betrifft den Unterbau – nicht unser Bereich',
+        text: 'Wackelnde oder abgesenkte Steine und Wasserprobleme haben ihre Ursache meist unter der Oberfläche. Das ist ein Fall für einen Pflaster- bzw. Landschaftsbaubetrieb. Wir reinigen, verfugen und schützen die Oberfläche – gern, sobald die Fläche wieder fest liegt.',
+        badge: has('lose') ? 'Zeitnah prüfen lassen' : 'Hinweis'
       });
-      services.push('aufbereitung');
     }
     if (needClean) {
       items.push({ icon: 'spray', title: 'Heißwasser-Hochdruckreinigung', text: 'Entfernt Moos, Algen, Grünbelag sowie Öl- und Schmutzspuren – mit Flächenreiniger und passendem Druck, damit Belag und Fugen geschont werden.' });
@@ -117,22 +117,25 @@
       items.push({ icon: 'bricks', title: 'Fugen auskratzen & neu verfugen', text: 'Unkraut und leere Fugen sind der Anfang vom Ende: Neue Fugen stabilisieren das Pflaster und halten Bewuchs fern.' });
       services.push('fugung');
     }
-    if (needClean && (a.prio === 'pflege' || a.prio === 'optik' || has('flecken'))) {
-      items.push({ icon: 'drop', title: 'Imprägnierung (optional)', text: 'Schützt vor schneller Neuverschmutzung durch Algen, Öl und Schmutz und erleichtert die spätere Pflege.', badge: 'Optional' });
+    if (wantsProtect) {
+      items.push({ icon: 'drop', title: 'Imprägnierung oder Versiegelung (optional)', text: 'Schützt die gereinigte Oberfläche vor schneller Neuverschmutzung: Eine Imprägnierung zieht in die Poren ein, eine Versiegelung bildet einen Schutzfilm und kann die Farbe vertiefen.', badge: 'Optional' });
+      if (services.indexOf('aufbereitung') < 0) services.push('aufbereitung');
     }
-    if (!items.length) {
-      items.push({ icon: 'clipboard', title: 'Kostenlose Besichtigung', text: 'Wir prüfen Belag, Fugen und Unterbau vor Ort und empfehlen die passende Maßnahme – ohne Verpflichtung.' });
+    if (!needClean && !needJoint && !needBase) {
+      items.push({ icon: 'clipboard', title: 'Kostenlose Besichtigung', text: 'Wir prüfen Belag, Fugen und Verschmutzung vor Ort und empfehlen die passende Maßnahme – ohne Verpflichtung.' });
       services.push('pflaster');
     }
+    if (!services.length) services.push('pflaster');
     var title, lead;
-    if (needSan) { title = 'Hier lohnt ein Blick auf den Unterbau.'; lead = 'Wackelnde oder abgesenkte Steine und Wasserprobleme haben meist eine Ursache unter der Oberfläche. Reinigen allein reicht dann nicht – am besten sehen wir uns die Fläche an.'; }
+    if (needBase && !needClean && !needJoint) { title = 'Das ist ein Fall für den Pflasterbau.'; lead = 'Lose oder abgesenkte Steine und Wasser, das nicht abläuft, haben meist eine Ursache unter der Oberfläche. Arbeiten am Unterbau gehören nicht zu unseren Leistungen – wir reinigen, verfugen und schützen die Oberfläche, gern nachdem ein Fachbetrieb die Fläche instand gesetzt hat.'; }
+    else if (needBase) { title = 'Unterbau extern – Oberfläche bei uns.'; lead = 'Lose oder abgesenkte Steine und Wasserprobleme haben ihre Ursache meist unter der Oberfläche; Arbeiten am Unterbau gehören nicht zu unseren Leistungen. Die Oberfläche übernehmen wir gern – am besten, nachdem ein Fachbetrieb die Fläche instand gesetzt hat.'; }
     else if (needClean && needJoint) { title = 'Reinigung plus neue Fugen.'; lead = 'Ihre Fläche ist grundsätzlich in Ordnung, aber Bewuchs und Fugenzustand sprechen für ein Komplettpaket: erst reinigen, dann neu verfugen.'; }
     else if (needClean) { title = 'Eine gründliche Reinigung bringt das meiste.'; lead = 'Die Beobachtungen sprechen für eine reine Oberflächenverschmutzung. Nach der Reinigung prüfen wir, ob die Fugen aufgefüllt werden sollten.'; }
     else if (needJoint) { title = 'Frische Fugen sind der Schlüssel.'; lead = 'Ausgespülte oder bewachsene Fugen lassen Wasser und Unkraut eindringen. Neu verfugen stabilisiert das Pflaster.'; }
     else { title = 'Wir schauen es uns gern an.'; lead = unsure ? 'Kein Problem – nicht jede Ursache lässt sich per Foto oder Fragebogen erkennen. Bei einer kostenlosen Besichtigung beurteilen wir den Zustand vor Ort.' : 'Das klingt nach einer gepflegten Fläche. Eine kurze Besichtigung zeigt, ob Vorsorge sinnvoll ist.'; }
 
     var joint = null;
-    if (needJoint || needSan) { joint = jointFor(load, a.prio); }
+    if (needJoint) { joint = jointFor(load, a.prio); }
     var uniq = services.filter(function (s, i) { return services.indexOf(s) === i; });
     var names = items.map(function (it) { return it.title.replace(/ \(optional\)/, ''); }).join(', ');
     var note = 'Zustandscheck – Fläche: ' + LABELS.flaeche[a.flaeche] + '. Beobachtungen: ' +
@@ -140,8 +143,8 @@
       (joint ? ' (Fugenmaterial: ' + LABELS.material[joint.key] + ')' : '') + '. Wichtig: ' + LABELS.prio[a.prio] + '.';
     var svc = [];
     if (needClean) svc.push('reinigung');
-    if (needJoint || needSan) svc.push('verfugung');
-    if (needClean && (a.prio === 'pflege' || a.prio === 'optik' || has('flecken'))) svc.push('impraegnierung');
+    if (needJoint) svc.push('verfugung');
+    if (wantsProtect) svc.push('impraegnierung');
     return {
       title: title, lead: lead, items: items, joint: joint, services: uniq, note: note,
       calcHref: 'rechner.html' + (svc.length ? '?s=' + svc.join(',') + (joint ? '&m=' + joint.key : '') : ''), calcLabel: 'Preis schätzen'

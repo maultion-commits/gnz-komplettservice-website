@@ -46,7 +46,7 @@ Alle Betriebsdaten stehen **an einer Stelle**: [`assets/js/config.js`](assets/js
 | Preise (Rechner) | `config.js` → `pricing` | **Beispielwerte!** Mit eigener Kalkulation ersetzen |
 | **Entwurfs-Modus** | `config.js` → `draft` | `true`: gelber Hinweis + `noindex` (Suchmaschinen bleiben draußen). `false`: Hinweis weg, Seiten indexierbar, strukturierte Daten (Schema.org) werden erzeugt |
 | Impressum / Datenschutz | `impressum.html`, `datenschutz.html` | gelb markierte `[…]`-Felder ausfüllen und **rechtlich prüfen lassen** |
-| Leistungstexte | die jeweiligen HTML-Seiten | generisch formuliert – auf das reale Leistungsspektrum prüfen (z. B. Winterdienst, Container, Instandsetzung am Gebäude) |
+| Leistungstexte | die jeweiligen HTML-Seiten | generisch formuliert – auf das reale Leistungsspektrum prüfen (z. B. Winterdienst, Container) |
 
 Ohne JavaScript zeigen die Seiten die in den HTML-Dateien hinterlegten Platzhalter (`Musterstraße 12 …`, `info@gnz-komplettservice.example`).
 
