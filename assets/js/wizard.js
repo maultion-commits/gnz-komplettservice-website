@@ -24,7 +24,7 @@
   var SERVICES = {
     pflaster: 'Pflasterreinigung', fugung: 'Spezialfugung', sanierung: 'Sanierung',
     raeumung: 'Räumung / Entrümpelung', abriss: 'Abriss / Rückbau', transport: 'Transport / Entsorgung',
-    innen: 'Innenraumreinigung', wand: 'Wand- / Fassadenreinigung', industrie: 'Industrieboden-Reinigung',
+    wand: 'Wand- / Fassadenreinigung', industrie: 'Industrieboden-Reinigung',
     garten: 'Gartenservice', hausmeister: 'Hausmeisterservice', beratung: 'Beratung / Sonstiges'
   };
   var TYPES = { eigentum: 'Einfamilienhaus / Eigentum', verwaltung: 'Mehrfamilienhaus / Hausverwaltung / WEG', gewerbe: 'Gewerbe / Industrie', sonstiges: 'Sonstiges' };

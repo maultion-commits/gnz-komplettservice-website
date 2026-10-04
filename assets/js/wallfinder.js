@@ -1,11 +1,12 @@
 /* ==========================================================================
    wallfinder.js – "Welches Verfahren passt?" für die Wandreinigung
    Untergrund + Verschmutzung wählen → Empfehlung mit Hinweisen und Übergabe an die Anfrage.
+   Die Empfehlungslogik wird als GNZ.WallAdvice bereitgestellt und vom Pflaster-Check mitgenutzt.
    ========================================================================== */
 (function () {
   'use strict';
+  var GNZ = (window.GNZ = window.GNZ || {});
   var root = document.querySelector('[data-wallfinder]');
-  if (!root) return;
 
   var SURFACE = {
     putz:        { label: 'Putzfassade / Wärmedämmverbundsystem (außen)', outside: true, soft: true },
@@ -24,11 +25,6 @@
     ausbluehung: 'Kalk- oder Salzausblühungen',
     schimmel:    'Schimmel- oder Feuchtigkeitsflecken'
   };
-
-  var sel = root.querySelector('[data-wf-surface]'), dirt = root.querySelector('[data-wf-dirt]');
-  Object.keys(SURFACE).forEach(function (k) { sel.appendChild(new Option(SURFACE[k].label, k)); });
-  Object.keys(DIRT).forEach(function (k) { dirt.appendChild(new Option(DIRT[k], k)); });
-  sel.value = 'putz'; dirt.value = 'algen';
 
   function advise(sk, dk) {
     var s = SURFACE[sk], r = { title: '', text: '', warn: '', limit: '' };
@@ -88,6 +84,15 @@
     }
     return { title: s.soft ? 'Niederdruck mit Reiniger' : 'Heißwasser mit angepasstem Druck', text: s.soft ? 'Allgemeine Verschmutzung wird mit Niederdruck, mildem Reiniger und Bürste gelöst und schonend abgespült.' : 'Allgemeine Verschmutzung entfernen wir mit Heißwasser bei angepasstem Druck – bei Bedarf mit Reiniger unterstützt.', warn: s.soft ? 'Hochdruck ist auf Putz, Dämmung und weichem Naturstein nicht geeignet.' : '', limit: 'Vorab ein Probefeld an unauffälliger Stelle.' };
   }
+
+  GNZ.WallAdvice = { SURFACE: SURFACE, DIRT: DIRT, advise: advise };
+
+  if (!root) return;
+
+  var sel = root.querySelector('[data-wf-surface]'), dirt = root.querySelector('[data-wf-dirt]');
+  Object.keys(SURFACE).forEach(function (k) { sel.appendChild(new Option(SURFACE[k].label, k)); });
+  Object.keys(DIRT).forEach(function (k) { dirt.appendChild(new Option(DIRT[k], k)); });
+  sel.value = 'putz'; dirt.value = 'algen';
 
   var out = root.querySelector('[data-wf-result]');
   function render() {

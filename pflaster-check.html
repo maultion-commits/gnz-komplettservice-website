@@ -13,9 +13,9 @@
 <script>document.documentElement.className += ' js';</script>
 <!-- /partial:head -->
 <title>Pflaster-Check – Was braucht Ihre Fläche? | GNZ Immobilien-Komplettservice</title>
-<meta name="description" content="Drei Fragen, eine klare Empfehlung: Der Pflaster-Check zeigt, ob Ihre Fläche Reinigung, neue Fugen oder eine Sanierung braucht – und welches Fugenmaterial passt.">
+<meta name="description" content="Wenige Fragen, eine klare Empfehlung: Der Check zeigt, ob Ihr Pflaster Reinigung, neue Fugen oder eine Pflasteraufbereitung braucht – und welches Verfahren bei Wänden, Fassaden und Industrieböden passt.">
 <meta property="og:title" content="Pflaster-Check – GNZ Immobilien-Komplettservice">
-<meta property="og:description" content="In 2 Minuten zur Empfehlung: Reinigung, Neuverfugung oder Sanierung?">
+<meta property="og:description" content="In 2 Minuten zur Empfehlung: Pflaster, Wand oder Industrieboden – welche Reinigung passt?">
 <!-- seo:start -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://gnz-komplettservice.netlify.app/pflaster-check.html">
@@ -124,7 +124,6 @@
             </div>
             <div class="mega__col">
               <p class="mega__label">Gebäudereinigung</p>
-              <a class="mega__item" href="innenreinigung.html"><span class="icon-badge icon-badge--dark"><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg></span><span><strong>Innenraumreinigung</strong><span class="d">Büro, Praxis, Treppenhaus, Wohnung</span></span></a>
               <a class="mega__item" href="wandreinigung.html"><span class="icon-badge icon-badge--dark"><svg class="i" aria-hidden="true"><use href="#i-wall"/></svg></span><span><strong>Wandreinigung</strong><span class="d">Innenwände &amp; Fassaden schonend reinigen</span></span></a>
               <a class="mega__item" href="industrieboden.html"><span class="icon-badge icon-badge--dark"><svg class="i" aria-hidden="true"><use href="#i-factory"/></svg></span><span><strong>Industrieboden-Reinigung</strong><span class="d">Hallen, Werkstätten &amp; Lager</span></span></a>
             </div>
@@ -161,7 +160,7 @@
         <ol class="crumbs"><li><a href="index.html">Start</a></li><li aria-current="page">Pflaster-Check</li></ol>
         <p class="eyebrow">Online-Werkzeug</p>
         <h1>Pflaster-Check</h1>
-        <p class="lead">Drei Fragen, eine klare Empfehlung: Wir sagen Ihnen, ob Ihre Fläche Reinigung, neue Fugen oder eine Sanierung braucht – und welches Fugenmaterial dazu passt.</p>
+        <p class="lead">Wenige Fragen, eine klare Empfehlung: Bei Pflaster sagen wir Ihnen, ob Reinigung, neue Fugen oder eine Pflasteraufbereitung nötig ist – und welches Fugenmaterial passt. Auch für Wände, Fassaden und Industrieböden finden Sie hier das passende Verfahren.</p>
       </div>
     </div>
   </section>
@@ -171,12 +170,21 @@
 
       <div class="quiz slab reveal" data-quiz>
         <div class="quiz__top">
-          <p class="quiz__step" data-quiz-step aria-live="polite">Frage 1 von 3</p>
-          <div class="progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1"><span style="--p:33%"></span></div>
+          <p class="quiz__step" data-quiz-step aria-live="polite">Frage 1</p>
+          <div class="progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1"><span style="--p:25%"></span></div>
         </div>
 
         <form data-quiz-form novalidate onsubmit="return false">
-          <fieldset class="quiz__q fs">
+          <fieldset class="quiz__q fs" data-need="radio:topic" data-msg="Bitte wählen Sie ein Thema aus.">
+            <legend>Wobei können wir helfen?</legend>
+            <div class="choice-grid choice-grid--2">
+              <label class="choice"><input type="radio" name="topic" value="pflaster"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-bricks"/></svg><span class="choice__text"><strong>Pflaster &amp; Außenfläche</strong><small>Einfahrt, Terrasse, Hof, Gehweg</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="topic" value="wand"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-wall"/></svg><span class="choice__text"><strong>Wand &amp; Fassade</strong><small>außen und innen, Fliesen, Graffiti</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="topic" value="industrie"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-factory"/></svg><span class="choice__text"><strong>Industrieboden</strong><small>Halle, Werkstatt, Lager</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz__q fs" data-flow="pflaster" data-need="radio:flaeche" data-msg="Bitte wählen Sie eine Fläche aus." hidden>
             <legend>Um welche Fläche geht es?</legend>
             <div class="choice-grid choice-grid--2">
               <label class="choice"><input type="radio" name="flaeche" value="einfahrt"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-truck"/></svg><span class="choice__text"><strong>Einfahrt / Stellplatz</strong><small>wird mit Fahrzeugen befahren</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
@@ -186,7 +194,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="quiz__q fs" hidden>
+          <fieldset class="quiz__q fs" data-flow="pflaster" data-need="any:anzeichen" data-msg="Bitte wählen Sie mindestens ein Anzeichen – oder „Ich bin unsicher“." hidden>
             <legend>Was fällt Ihnen auf?<br><small>Mehrfachauswahl möglich.</small></legend>
             <div class="choice-grid choice-grid--2">
               <label class="choice"><input type="checkbox" name="anzeichen" value="moos"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg><span class="choice__text"><strong>Moos, Algen, Grünbelag</strong><small>grüne oder schwarze Beläge</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
@@ -200,13 +208,59 @@
             </div>
           </fieldset>
 
-          <fieldset class="quiz__q fs" hidden>
+          <fieldset class="quiz__q fs" data-flow="pflaster" data-need="radio:prio" data-msg="Bitte wählen Sie aus, was Ihnen am wichtigsten ist." hidden>
             <legend>Was ist Ihnen am wichtigsten?</legend>
             <div class="choice-grid choice-grid--2">
               <label class="choice"><input type="radio" name="prio" value="optik"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span class="choice__text"><strong>Schöne Optik</strong><small>gepflegt, gleichmäßig, sauber</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
               <label class="choice"><input type="radio" name="prio" value="pflege"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg><span class="choice__text"><strong>Wenig Pflegeaufwand</strong><small>möglichst lange Ruhe</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
               <label class="choice"><input type="radio" name="prio" value="preis"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-euro"/></svg><span class="choice__text"><strong>Günstige Lösung</strong><small>Budget schonen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
               <label class="choice"><input type="radio" name="prio" value="haltbar"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span class="choice__text"><strong>Maximale Haltbarkeit</strong><small>einmal richtig machen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz__q fs" data-flow="wand" data-need="radio:untergrund" data-msg="Bitte wählen Sie den Untergrund aus." hidden>
+            <legend>Welche Wand soll gereinigt werden?</legend>
+            <div class="choice-grid choice-grid--2">
+              <label class="choice"><input type="radio" name="untergrund" value="putz"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-house"/></svg><span class="choice__text"><strong>Putzfassade / WDVS</strong><small>außen, druckempfindlich</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="untergrund" value="klinker"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-bricks"/></svg><span class="choice__text"><strong>Klinker / Backstein</strong><small>außen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="untergrund" value="beton"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-wall"/></svg><span class="choice__text"><strong>Beton / Sichtbeton</strong><small>außen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="untergrund" value="naturstein"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span class="choice__text"><strong>Naturstein</strong><small>außen, säureempfindlich</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="untergrund" value="innen-farbe"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg><span class="choice__text"><strong>Innenwand, gestrichen</strong><small>Wohnung, Büro, Flur</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="untergrund" value="innen-tapete"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-clipboard"/></svg><span class="choice__text"><strong>Innenwand, tapeziert</strong><small>nur trocken reinigen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="untergrund" value="fliesen"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span class="choice__text"><strong>Fliesen</strong><small>Bad, Küche, Flur</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz__q fs" data-flow="wand" data-need="radio:wproblem" data-msg="Bitte wählen Sie das Problem aus." hidden>
+            <legend>Was ist das Problem?</legend>
+            <div class="choice-grid choice-grid--2">
+              <label class="choice"><input type="radio" name="wproblem" value="algen"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-leaf"/></svg><span class="choice__text"><strong>Algen, Moos, Grünbelag</strong><small>grüne oder schwarze Beläge</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="wproblem" value="russ"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg><span class="choice__text"><strong>Ruß, Nikotin, Kerzenrauch</strong><small>graue bis gelbliche Schleier</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="wproblem" value="staub"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg><span class="choice__text"><strong>Staub, Schmutz, Fettfilm</strong><small>allgemeine Verschmutzung</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="wproblem" value="graffiti"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-spray"/></svg><span class="choice__text"><strong>Graffiti</strong><small>Farbschmierereien</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="wproblem" value="ausbluehung"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-sparkle"/></svg><span class="choice__text"><strong>Kalk- oder Salzausblühungen</strong><small>weiße Ausblühungen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="wproblem" value="schimmel"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span class="choice__text"><strong>Schimmel / Feuchtigkeitsflecken</strong><small>erst die Ursache klären</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz__q fs" data-flow="industrie" data-need="radio:boden" data-msg="Bitte wählen Sie die Bodenart aus." hidden>
+            <legend>Was für ein Boden ist es?</legend>
+            <div class="choice-grid choice-grid--2">
+              <label class="choice"><input type="radio" name="boden" value="beton"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-factory"/></svg><span class="choice__text"><strong>Beton / Estrich</strong><small>saugfähig, oft unbeschichtet</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="boden" value="beschichtet"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span class="choice__text"><strong>Epoxid- oder PU-Beschichtung</strong><small>versiegelt, glatt</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="boden" value="fliesen"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg><span class="choice__text"><strong>Fliesen / Platten</strong><small>mit Fugen</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="boden" value="unsicher"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span class="choice__text"><strong>Weiß ich nicht</strong><small>wir prüfen es vor Ort</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="quiz__q fs" data-flow="industrie" data-need="radio:problem" data-msg="Bitte wählen Sie aus, was behoben werden soll." hidden>
+            <legend>Was soll behoben werden?</legend>
+            <div class="choice-grid choice-grid--2">
+              <label class="choice"><input type="radio" name="problem" value="staub"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-broom"/></svg><span class="choice__text"><strong>Staub, Späne, Grobschmutz</strong><small>laufende Reinigung</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="problem" value="oel"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-drop"/></svg><span class="choice__text"><strong>Öl- und Fettflecken</strong><small>Werkstatt, Lager, Fahrwege</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="problem" value="film"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-spray"/></svg><span class="choice__text"><strong>Schmutzfilm, Reifenabrieb</strong><small>grau, schmierig, dunkel</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="problem" value="rutschig"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-warn"/></svg><span class="choice__text"><strong>Boden ist rutschig</strong><small>Unfallgefahr</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
+              <label class="choice"><input type="radio" name="problem" value="vorbereitung"><span class="choice__body"><svg class="i" aria-hidden="true"><use href="#i-hammer"/></svg><span class="choice__text"><strong>Vorbereitung für Beschichtung</strong><small>sauberer Untergrund nötig</small></span><span class="choice__tick"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span></span></label>
             </div>
           </fieldset>
 
@@ -241,7 +295,7 @@
         <div class="slab">
           <h2 style="font-size:1.8rem;">So funktioniert’s</h2>
           <ol class="checks" style="margin-top:.8rem;">
-            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Sie beantworten drei kurze Fragen.</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Sie wählen Ihr Thema und beantworten zwei bis drei kurze Fragen.</li>
             <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Sie erhalten eine Empfehlung mit Begründung.</li>
             <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Per Klick geht Ihr Ergebnis direkt in die Anfrage oder den Preisrechner.</li>
           </ol>
@@ -289,7 +343,7 @@
           <svg class="brand__logo" viewBox="0 0 150 58" aria-hidden="true"><use href="#logo-gnz"/></svg>
           <span class="brand__tag"><span>Immobilien-</span><span>Komplettservice</span></span>
         </a>
-        <p>Pflasterreinigung, Spezialfugung und Sanierung – dazu Gebäudereinigung, Räumung, Abriss, Transport und Gartenservice. Alles aus einer Hand.</p>
+        <p>Pflasterreinigung, Spezialfugung und Sanierung – dazu Gebäudereinigung, Räumung, Abriss, Transport und Gartenservice. Alles aus einer Hand – mit hochwertigem, professionellem Equipment.</p>
         <p class="topbar__status" data-open-status data-state="unknown"><span class="dot" aria-hidden="true"></span><span data-open-text>Mo–Fr 07:00–17:00 Uhr erreichbar</span></p>
       </div>
       <nav aria-label="Leistungen">
@@ -298,7 +352,6 @@
           <li><a href="pflasterreinigung.html">Pflasterreinigung</a></li>
           <li><a href="spezialfugung.html">Spezialfugung</a></li>
           <li><a href="sanierung.html">Sanierung</a></li>
-          <li><a href="innenreinigung.html">Innenraumreinigung</a></li>
           <li><a href="wandreinigung.html">Wandreinigung</a></li>
           <li><a href="industrieboden.html">Industrieboden-Reinigung</a></li>
           <li><a href="raeumung-abriss-transport.html">Räumung, Abriss &amp; Transport</a></li>
@@ -372,7 +425,6 @@
           <option>Pflasterreinigung</option>
           <option>Spezialfugung</option>
           <option>Sanierung</option>
-          <option>Innenraumreinigung</option>
           <option>Wand- oder Fassadenreinigung</option>
           <option>Industrieboden-Reinigung</option>
           <option>Räumung, Abriss oder Transport</option>
@@ -402,6 +454,7 @@
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/callback.js" defer></script>
 <!-- /partial:scripts -->
+<script src="assets/js/wallfinder.js" defer></script>
 <script src="assets/js/check.js" defer></script>
 </body>
 </html>

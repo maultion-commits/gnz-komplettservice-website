@@ -22,9 +22,9 @@ python -m http.server 8805      # oder: npx serve
 |---|---|
 | `index.html` | Hero mit **Tageszeit-Begrüßung**, Online-Werkzeuge, Schwerpunkte, **Reinigungs-Simulator**, **Vorher/Nachher-Regler**, Fugen-Teaser, Komplettservice, Ablauf, **„Persönlich für Sie da“**, Galerie-Teaser, **Pflege-Tipp des Monats** (mit jährlicher **Kalender-Erinnerung**), FAQ |
 | `pflasterreinigung.html` · `spezialfugung.html` · `sanierung.html` | Schwerpunkte (Spezialfugung mit **Fugen-Konfigurator**, Sanierung mit Entscheidungstabelle) |
-| `innenreinigung.html` · `wandreinigung.html` · `industrieboden.html` | **Gebäudereinigung**: Innenraum (mit **Reinigungsplan-Planer**), Wände & Fassaden (mit **Verfahrens-Finder** und **Richtwert-Rechner**), Industrieböden (mit **Richtwert-Rechner**) |
+| `wandreinigung.html` · `industrieboden.html` | **Gebäudereinigung**: Wände & Fassaden (mit **Verfahrens-Finder** und **Richtwert-Rechner**), Industrieböden (mit **Richtwert-Rechner**) |
 | `raeumung-abriss-transport.html` · `gartenservice.html` · `hausmeisterservice.html` | Zusatzleistungen (Garten mit **Gartenjahr-Tabs**, Hausmeister mit **Betreuungsplan-Planer**) |
-| `pflaster-check.html` | **Pflaster-Check**: 3 Fragen → Empfehlung (Reinigung / Neuverfugung / Sanierung + Fugenmaterial) |
+| `pflaster-check.html` | **Pflaster-Check**: Thema wählen (Pflaster · Wand · Industrieboden), 2–3 Fragen → Empfehlung (bei Pflaster: Reinigung / Neuverfugung / Pflasteraufbereitung + Fugenmaterial) |
 | `rechner.html` | **Preisrechner** (Richtwert-Spanne, druckbar / als PDF speicherbar) |
 | `kontakt.html` | **Anfrage-Assistent** (4 Schritte → E-Mail / WhatsApp / Zwischenablage), Kontaktdaten, Live-Status „Jetzt erreichbar“ |
 | `galerie.html` | Galerie mit Filter, Lightbox (Tastatur, Wischen) und Bildnachweis |
@@ -65,7 +65,7 @@ Nach jeder Änderung an `partials/*`, `tools/photos.json`, `tools/site.json` ode
 
 ## Bilder & Lizenzen
 
-* Alle 31 Fotos stammen von **Unsplash** und stehen unter der [Unsplash-Lizenz](https://unsplash.com/license)
+* Alle 39 Fotos stammen von **Unsplash** und stehen unter der [Unsplash-Lizenz](https://unsplash.com/license)
   (kostenlos, auch kommerziell nutzbar; Namensnennung nicht verpflichtend, wird aber im Bildnachweis auf `galerie.html` geführt).
   Verwendet wurden ausschließlich kostenlose Fotos – **keine** Unsplash+-Bilder.
 * Die Fotos liegen **lokal** in `assets/img/photos/` (je 480 / 960 / 1600 px, per `srcset` responsiv). Die Seite lädt nichts von Dritten.

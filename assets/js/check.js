@@ -1,11 +1,13 @@
 /* ==========================================================================
-   check.js – Pflaster-Check
-   Drei Fragen → Empfehlung (Reinigung / Neuverfugung / Sanierung) → Übergabe an Anfrage & Rechner
+   check.js – Schnell-Check (Pflaster · Wand · Industrieboden)
+   Erste Frage wählt das Thema, danach folgt je Thema eine kurze Fragenfolge → Empfehlung
+   → Übergabe an Anfrage, Rechner bzw. Planer. Nichts wird gespeichert oder gesendet.
    ========================================================================== */
 (function () {
   'use strict';
   var root = document.querySelector('[data-quiz]');
   if (!root) return;
+  var GNZ = window.GNZ || {};
 
   var qs = function (s, r) { return (r || root).querySelector(s); };
   var qsa = function (s, r) { return Array.prototype.slice.call((r || root).querySelectorAll(s)); };
@@ -18,25 +20,20 @@
   var nextBtn = qs('[data-quiz-next]');
   var errorEl = qs('[data-quiz-error]');
   var result = qs('[data-quiz-result]');
-  var idx = 0;
+  var seq = [panels[0]], idx = 0, topic = '';
 
   var LABELS = {
     flaeche: { einfahrt: 'Einfahrt / Stellplatz', terrasse: 'Terrasse / Hof', gehweg: 'Gehweg / Zugang', gewerbe: 'Gewerbefläche' },
     anzeichen: { moos: 'Moos/Algen', unkraut: 'Unkraut in den Fugen', fugen: 'ausgespülte Fugen', flecken: 'Öl-/Rost-/Reifenflecken', schleier: 'Vergrauung/Kalkschleier', lose: 'lose oder abgesenkte Steine', wasser: 'Wasser steht', unsicher: 'unsicher' },
     prio: { optik: 'schöne Optik', pflege: 'wenig Pflegeaufwand', preis: 'günstige Lösung', haltbar: 'maximale Haltbarkeit' },
-    material: { sand: 'Fugensand', polymer: 'Polymersand', drain: 'Drainfugenmörtel', epoxid: 'Epoxid-Fugenmörtel' }
+    material: { sand: 'Fugensand', polymer: 'Polymersand', drain: 'Drainfugenmörtel', epoxid: 'Epoxid-Fugenmörtel' },
+    boden: { beton: 'Beton / Estrich', beschichtet: 'Epoxid-/PU-Beschichtung', fliesen: 'Fliesen / Platten', unsicher: 'Bodenart unbekannt' },
+    problem: { staub: 'Staub, Späne, Grobschmutz', oel: 'Öl- und Fettflecken', film: 'Schmutzfilm / Reifenabrieb', rutschig: 'rutschiger Boden', vorbereitung: 'Vorbereitung für Beschichtung' }
   };
 
-  /* ---------- Auswahl lesen ---------- */
-  function answers() {
-    var f = form.querySelector('input[name="flaeche"]:checked');
-    var p = form.querySelector('input[name="prio"]:checked');
-    return {
-      flaeche: f ? f.value : '',
-      anzeichen: qsa('input[name="anzeichen"]:checked', form).map(function (i) { return i.value; }),
-      prio: p ? p.value : ''
-    };
-  }
+  /* ---------- Hilfen ---------- */
+  var radioVal = function (name) { var e = form.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : ''; };
+  var checked = function (name) { return qsa('input[name="' + name + '"]:checked', form).map(function (i) { return i.value; }); };
 
   // "unsicher" schließt die anderen Anzeichen aus – und umgekehrt
   qsa('input[name="anzeichen"]', form).forEach(function (cb) {
@@ -49,36 +46,41 @@
   });
 
   /* ---------- Navigation ---------- */
+  function buildSeq() {
+    topic = radioVal('topic');
+    seq = [panels[0]].concat(panels.filter(function (p) { return p.getAttribute('data-flow') === topic; }));
+  }
   function show(i) {
     idx = i;
-    panels.forEach(function (p, n) { p.hidden = n !== i; });
-    var total = panels.length;
-    stepLabel.textContent = 'Frage ' + (i + 1) + ' von ' + total;
-    fill.style.setProperty('--p', Math.round(((i + 1) / total) * 100) + '%');
+    panels.forEach(function (p) { p.hidden = p !== seq[i]; });
+    // Auf der Themenwahl steht die Länge der Folge noch nicht fest
+    var total = i === 0 ? 3 : seq.length;
+    stepLabel.textContent = i === 0 ? 'Frage 1' : 'Frage ' + (i + 1) + ' von ' + seq.length;
+    fill.style.setProperty('--p', Math.round(((i + 1) / (i === 0 ? 4 : total)) * 100) + '%');
+    progress.setAttribute('aria-valuemax', String(total));
     progress.setAttribute('aria-valuenow', String(i + 1));
     backBtn.hidden = i === 0;
-    nextBtn.firstChild.textContent = i === total - 1 ? 'Auswerten ' : 'Weiter ';
+    nextBtn.firstChild.textContent = i > 0 && i === seq.length - 1 ? 'Auswerten ' : 'Weiter ';
     errorEl.hidden = true;
   }
-
   function validate() {
-    var a = answers(), msg = '';
-    if (idx === 0 && !a.flaeche) msg = 'Bitte wählen Sie aus, um welche Fläche es geht.';
-    if (idx === 1 && !a.anzeichen.length) msg = 'Bitte wählen Sie mindestens eine Beobachtung – oder „Ich bin unsicher“.';
-    if (idx === 2 && !a.prio) msg = 'Bitte wählen Sie, was Ihnen am wichtigsten ist.';
-    if (msg) { errorEl.textContent = msg; errorEl.hidden = false; return false; }
-    errorEl.hidden = true;
-    return true;
+    var p = seq[idx], need = (p.getAttribute('data-need') || '').split(':'), ok = true;
+    if (need[0] === 'radio') ok = !!radioVal(need[1]);
+    if (need[0] === 'any') ok = checked(need[1]).length > 0;
+    if (!ok) { errorEl.textContent = p.getAttribute('data-msg') || 'Bitte treffen Sie eine Auswahl.'; errorEl.hidden = false; }
+    else errorEl.hidden = true;
+    return ok;
   }
+  function focusPanel() { var l = seq[idx].querySelector('legend'); if (l) { l.setAttribute('tabindex', '-1'); l.focus({ preventScroll: true }); } }
 
   nextBtn.addEventListener('click', function () {
     if (!validate()) return;
-    if (idx < panels.length - 1) { show(idx + 1); focusPanel(); } else { evaluate(); }
+    if (idx === 0) buildSeq();
+    if (idx < seq.length - 1) { show(idx + 1); focusPanel(); } else { evaluate(); }
   });
   backBtn.addEventListener('click', function () { if (idx > 0) { show(idx - 1); focusPanel(); } });
-  function focusPanel() { var l = panels[idx].querySelector('legend'); if (l) { l.setAttribute('tabindex', '-1'); l.focus({ preventScroll: true }); } }
 
-  /* ---------- Auswertung ---------- */
+  /* ---------- Thema: Pflaster ---------- */
   function jointFor(load, prio) {
     if (load === 'high') return { key: 'epoxid', why: 'Gewerbliche Beanspruchung durch Fahrzeuge, Kehrmaschinen und Hochdruckreinigung verlangt eine harzgebundene, strahlfeste Fuge.' };
     if (prio === 'haltbar') return load === 'mid'
@@ -89,15 +91,14 @@
     return { key: 'drain', why: 'Drainfugenmörtel liefert ein sauberes, pflegeleichtes Fugenbild und hält Unkraut und Auswaschung dauerhaft fern.' };
   }
 
-  function evaluate() {
-    var a = answers();
+  function evalPflaster() {
+    var a = { flaeche: radioVal('flaeche'), anzeichen: checked('anzeichen'), prio: radioVal('prio') };
     var load = a.flaeche === 'gewerbe' ? 'high' : a.flaeche === 'einfahrt' ? 'mid' : 'low';
     var has = function (k) { return a.anzeichen.indexOf(k) > -1; };
     var needSan = has('lose') || has('wasser');
     var needClean = has('moos') || has('unkraut') || has('flecken') || has('schleier');
     var needJoint = has('unkraut') || has('fugen');
     var unsure = has('unsicher');
-
     var items = [], services = [];
     if (needSan) {
       items.push({
@@ -123,7 +124,6 @@
       items.push({ icon: 'clipboard', title: 'Kostenlose Besichtigung', text: 'Wir prüfen Belag, Fugen und Unterbau vor Ort und empfehlen die passende Maßnahme – ohne Verpflichtung.' });
       services.push('pflaster');
     }
-
     var title, lead;
     if (needSan) { title = 'Hier lohnt ein Blick auf den Unterbau.'; lead = 'Wackelnde oder abgesenkte Steine und Wasserprobleme haben meist eine Ursache unter der Oberfläche. Reinigen allein reicht dann nicht – am besten sehen wir uns die Fläche an.'; }
     else if (needClean && needJoint) { title = 'Reinigung plus neue Fugen.'; lead = 'Ihre Fläche ist grundsätzlich in Ordnung, aber Bewuchs und Fugenzustand sprechen für ein Komplettpaket: erst reinigen, dann neu verfugen.'; }
@@ -131,16 +131,88 @@
     else if (needJoint) { title = 'Frische Fugen sind der Schlüssel.'; lead = 'Ausgespülte oder bewachsene Fugen lassen Wasser und Unkraut eindringen. Neu verfugen stabilisiert das Pflaster.'; }
     else { title = 'Wir schauen es uns gern an.'; lead = unsure ? 'Kein Problem – nicht jede Ursache lässt sich per Foto oder Fragebogen erkennen. Bei einer kostenlosen Besichtigung beurteilen wir den Zustand vor Ort.' : 'Das klingt nach einer gepflegten Fläche. Eine kurze Besichtigung zeigt, ob Vorsorge sinnvoll ist.'; }
 
-    qs('[data-r-title]').textContent = title;
-    qs('[data-r-lead]').textContent = lead;
+    var joint = null;
+    if (needJoint || needSan) { joint = jointFor(load, a.prio); }
+    var uniq = services.filter(function (s, i) { return services.indexOf(s) === i; });
+    var names = items.map(function (it) { return it.title.replace(/ \(optional\)/, ''); }).join(', ');
+    var note = 'Pflaster-Check – Fläche: ' + LABELS.flaeche[a.flaeche] + '. Beobachtungen: ' +
+      a.anzeichen.map(function (k) { return LABELS.anzeichen[k]; }).join(', ') + '. Empfehlung: ' + names +
+      (joint ? ' (Fugenmaterial: ' + LABELS.material[joint.key] + ')' : '') + '. Wichtig: ' + LABELS.prio[a.prio] + '.';
+    var svc = [];
+    if (needClean) svc.push('reinigung');
+    if (needJoint || needSan) svc.push('verfugung');
+    if (needClean && (a.prio === 'pflege' || a.prio === 'optik' || has('flecken'))) svc.push('impraegnierung');
+    return {
+      title: title, lead: lead, items: items, joint: joint, services: uniq, note: note,
+      calcHref: 'rechner.html' + (svc.length ? '?s=' + svc.join(',') + (joint ? '&m=' + joint.key : '') : ''), calcLabel: 'Preis schätzen'
+    };
+  }
 
+  /* ---------- Thema: Wand ---------- */
+  function evalWand() {
+    var sk = radioVal('untergrund'), dk = radioVal('wproblem');
+    var W = GNZ.WallAdvice;
+    var a = W ? W.advise(sk, dk) : { title: 'Probefeld und passendes Verfahren', text: 'Wir prüfen den Untergrund vor Ort und wählen das passende Verfahren.', warn: '', limit: '' };
+    var items = [{ icon: 'wall', title: a.title, text: a.text }];
+    if (a.warn) items.push({ icon: 'warn', title: 'Achtung', text: a.warn, badge: 'Wichtig' });
+    if (a.limit) items.push({ icon: 'info', title: 'Grenzen & Nachsorge', text: a.limit });
+    var sl = W ? W.SURFACE[sk].label : sk, dl = W ? W.DIRT[dk] : dk;
+    return {
+      title: 'So reinigen wir diese Wand.', lead: 'Für ' + sl + ' mit „' + dl + '“ empfehlen wir:', items: items, joint: null, services: ['wand'],
+      note: 'Schnell-Check Wand – Untergrund: ' + sl + '; Verschmutzung: ' + dl + '. Empfohlenes Verfahren: ' + a.title + '.',
+      calcHref: 'wandreinigung.html#richtwert', calcLabel: 'Richtwert berechnen'
+    };
+  }
+
+  /* ---------- Thema: Industrieboden ---------- */
+  function evalIndustrie() {
+    var b = radioVal('boden'), p = radioVal('problem'), items = [], warn = '', title, text;
+    if (p === 'staub') {
+      title = 'Kehren, Saugen und maschinelle Reinigung';
+      text = 'Staub, Späne und Grobschmutz nehmen wir mit Kehr- und Industriesaugtechnik auf; Scheuersaugmaschinen reinigen und trocknen in einem Gang – regelmäßig nach Plan.';
+    } else if (p === 'oel') {
+      title = 'Entfetten: binden, lösen, absaugen';
+      text = 'Öl und Fett werden gebunden bzw. gelöst und mit Heißwasser-Hochdruck samt Absaugung beseitigt. Das Reinigungswasser nehmen wir auf und entsorgen es ordnungsgemäß.';
+      warn = b === 'beton' ? 'Beton ist saugfähig: Je früher behandelt, desto besser. Tief eingedrungene Flecken lassen sich oft nur aufhellen.' : b === 'beschichtet' ? 'Beschichtungen vertragen nicht jedes Lösemittel – Reiniger und Verfahren stimmen wir auf die Herstellerangaben ab.' : '';
+    } else if (p === 'film') {
+      title = 'Maschinelle Grundreinigung';
+      text = 'Reiniger mit Einwirkzeit, maschinelles Schrubben und Absaugen lösen Schmutzfilme und Reifenabrieb. Danach genügt meist eine regelmäßige Unterhaltsreinigung.';
+    } else if (p === 'rutschig') {
+      title = 'Rückstände entfernen, Rutschhemmung prüfen';
+      text = 'Oft machen Öl-, Fett- und Schmutzfilme den Boden glatt – eine Grundreinigung entfernt sie. Bleibt der Boden danach glatt, liegt es am Belag: Dann ist die Prüfung der Rutschhemmung und gegebenenfalls eine rutschhemmende Beschichtung durch einen Fachbetrieb sinnvoll.';
+      warn = 'Rutschige Böden sind ein Unfallrisiko – bitte zeitnah handeln und den Bereich bis dahin absichern.';
+    } else {
+      title = 'Gründliche Reinigung als Vorbereitung';
+      text = 'Reinigen und Entfetten sind die Basis jeder Beschichtung. Schleif- und Beschichtungsarbeiten führen Fachbetriebe aus – wir koordinieren den Ablauf gern mit.';
+    }
+    items.push({ icon: 'factory', title: title, text: text });
+    if (warn) items.push({ icon: 'warn', title: 'Achtung', text: warn, badge: 'Wichtig' });
+    var hint = {
+      beton: 'Beton und Estrich sind saugfähig – Reiniger und Einwirkzeit wählen wir passend.',
+      beschichtet: 'Bei beschichteten Böden verwenden wir Pads und Reiniger passend zur Beschichtung und beachten die Pflegehinweise des Herstellers.',
+      fliesen: 'Bei Fliesen reinigen wir die Fugen mit – sie sind oft die Schwachstelle.',
+      unsicher: 'Die Bodenart prüfen wir bei der Begehung und wählen Verfahren und Mittel entsprechend.'
+    }[b];
+    items.push({ icon: 'info', title: 'Zu Ihrem Boden', text: hint });
+    return {
+      title: 'So bekommen wir den Boden in den Griff.', lead: 'Für ' + LABELS.boden[b] + ' mit „' + LABELS.problem[p] + '“ empfehlen wir:', items: items, joint: null, services: ['industrie'],
+      note: 'Schnell-Check Industrieboden – Boden: ' + LABELS.boden[b] + '; Thema: ' + LABELS.problem[p] + '. Empfehlung: ' + title + '.',
+      calcHref: 'industrieboden.html#richtwert', calcLabel: 'Richtwert berechnen'
+    };
+  }
+
+  /* ---------- Ergebnis ---------- */
+  function evaluate() {
+    var r = topic === 'wand' ? evalWand() : topic === 'industrie' ? evalIndustrie() : evalPflaster();
+
+    qs('[data-r-title]').textContent = r.title;
+    qs('[data-r-lead]').textContent = r.lead;
     var list = qs('[data-r-list]');
     list.innerHTML = '';
-    items.forEach(function (it) {
+    r.items.forEach(function (it) {
       var li = document.createElement('li');
       li.className = 'result-item' + (it.urgent ? ' result-item--urgent' : '');
-      li.innerHTML = '<span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-' + it.icon + '"/></svg></span>' +
-        '<h3></h3><p></p>';
+      li.innerHTML = '<span class="icon-badge"><svg class="i" aria-hidden="true"><use href="#i-' + it.icon + '"/></svg></span><h3></h3><p></p>';
       var h3 = li.querySelector('h3');
       h3.textContent = it.title;
       if (it.badge) { var b = document.createElement('span'); b.className = 'badge' + (it.urgent ? '' : ' badge--dark'); b.textContent = it.badge; h3.appendChild(b); }
@@ -148,42 +220,24 @@
       list.appendChild(li);
     });
 
-    // Fugenempfehlung
     var jointBox = qs('[data-r-joint]');
-    var material = null;
-    if (needJoint || needSan) {
-      var j = jointFor(load, a.prio);
-      material = j.key;
-      qs('[data-r-joint-name]').textContent = LABELS.material[j.key];
-      qs('[data-r-joint-why]').textContent = j.why;
-      qs('[data-r-joint-link]').setAttribute('href', 'spezialfugung.html?material=' + j.key + '#konfigurator');
+    if (r.joint) {
+      qs('[data-r-joint-name]').textContent = LABELS.material[r.joint.key];
+      qs('[data-r-joint-why]').textContent = r.joint.why;
+      qs('[data-r-joint-link]').setAttribute('href', 'spezialfugung.html?material=' + r.joint.key + '#konfigurator');
       jointBox.hidden = false;
-    } else {
-      jointBox.hidden = true;
-    }
+    } else jointBox.hidden = true;
 
-    // Übergaben
-    var uniq = services.filter(function (s, i) { return services.indexOf(s) === i; });
-    var names = items.map(function (it) { return it.title.replace(/ \(optional\)/, ''); }).join(', ');
-    var note = 'Pflaster-Check – Fläche: ' + LABELS.flaeche[a.flaeche] + '. Beobachtungen: ' +
-      a.anzeichen.map(function (k) { return LABELS.anzeichen[k]; }).join(', ') + '. Empfehlung: ' + names +
-      (material ? ' (Fugenmaterial: ' + LABELS.material[material] + ')' : '') + '. Wichtig: ' + LABELS.prio[a.prio] + '.';
-    qs('[data-r-cta]').setAttribute('href', 'kontakt.html?leistung=' + encodeURIComponent(uniq.join(',')) + '&notiz=' + encodeURIComponent(note));
+    qs('[data-r-cta]').setAttribute('href', 'kontakt.html?leistung=' + encodeURIComponent(r.services.join(',')) + '&notiz=' + encodeURIComponent(r.note));
+    var calc = qs('[data-r-calc]');
+    calc.setAttribute('href', r.calcHref);
+    calc.textContent = r.calcLabel;
 
-    var svc = [];
-    if (needClean) svc.push('reinigung');
-    if (needJoint || needSan) svc.push('verfugung');
-    if (needClean && (a.prio === 'pflege' || a.prio === 'optik' || has('flecken'))) svc.push('impraegnierung');
-    var calcHref = 'rechner.html' + (svc.length ? '?s=' + svc.join(',') + (material ? '&m=' + material : '') : '');
-    qs('[data-r-calc]').setAttribute('href', calcHref);
-
-    // Ergebnis anzeigen
     form.hidden = true;
     root.querySelector('.quiz__top').hidden = true;
     result.hidden = false;
     result.focus();
-    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    if (window.GNZ) { window.GNZ.lastCheck = { items: items, material: material, services: uniq }; }
+    result.scrollIntoView({ behavior: GNZ.util && GNZ.util.reducedMotion() ? 'auto' : 'smooth', block: 'start' });
   }
 
   qs('[data-quiz-restart]').addEventListener('click', function () {
@@ -191,9 +245,14 @@
     result.hidden = true;
     form.hidden = false;
     root.querySelector('.quiz__top').hidden = false;
+    topic = ''; seq = [panels[0]];
     show(0);
     root.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+
+  // Direkteinstieg per URL, z. B. pflaster-check.html?thema=wand
+  var pre = new URLSearchParams(window.location.search).get('thema');
+  if (pre) { var el = form.querySelector('input[name="topic"][value="' + pre + '"]'); if (el) el.checked = true; }
 
   show(0);
 })();
