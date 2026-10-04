@@ -43,10 +43,11 @@
 
   var state = { pattern: 'fischgraet', stone: 'grau', material: 'drain', jointColor: 'hellgrau' };
   var q = new URLSearchParams(window.location.search);
-  if (PATTERNS[q.get('verband')]) state.pattern = q.get('verband');
-  if (P.STONES[q.get('stein')]) state.stone = q.get('stein');
-  if (MATERIALS[q.get('material')]) { state.material = q.get('material'); state.jointColor = MATERIALS[state.material].color; }
-  if (P.JOINT_COLORS[q.get('fuge')]) state.jointColor = q.get('fuge');
+  var own = function (obj, key) { return key !== null && Object.prototype.hasOwnProperty.call(obj, key); };  // nur eigene Schlüssel aus der Adresse zulassen
+  if (own(PATTERNS, q.get('verband'))) state.pattern = q.get('verband');
+  if (own(P.STONES, q.get('stein'))) state.stone = q.get('stein');
+  if (own(MATERIALS, q.get('material'))) { state.material = q.get('material'); state.jointColor = MATERIALS[state.material].color; }
+  if (own(P.JOINT_COLORS, q.get('fuge'))) state.jointColor = q.get('fuge');
 
   var canvas = root.querySelector('[data-cfg-canvas]');
   var summary = root.querySelector('[data-cfg-summary]');

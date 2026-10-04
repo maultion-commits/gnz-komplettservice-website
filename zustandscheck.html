@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <link rel="stylesheet" href="assets/css/features.css">
-<script>document.documentElement.className += ' js';</script>
+<script src="assets/js/init.js"></script>
 <!-- /partial:head -->
 <title>Zustandscheck – Was braucht Ihre Fläche? | GNZ Immobilien-Komplettservice</title>
 <meta name="description" content="Wenige Fragen, eine klare Empfehlung: Der Check zeigt, ob Ihr Pflaster Reinigung, neue Fugen oder einen Oberflächenschutz braucht – und welches Verfahren bei Wänden, Fassaden und Industrieböden passt.">
@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://gnz-komplettservice.netlify.app/assets/img/photos/pflaster-moos-1600.jpg">
 <!-- seo:end -->
+
 
 
 </head>
@@ -176,7 +177,7 @@
           <div class="progress" role="progressbar" aria-label="Fortschritt" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1"><span style="--p:25%"></span></div>
         </div>
 
-        <form data-quiz-form novalidate onsubmit="return false">
+        <form data-quiz-form novalidate>
           <fieldset class="quiz__q fs" data-need="radio:topic" data-msg="Bitte wählen Sie ein Thema aus.">
             <legend>Wobei können wir helfen?</legend>
             <div class="choice-grid choice-grid--2">
@@ -403,7 +404,7 @@
 <button class="fab" type="button" data-fab data-open-callback><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Rückruf anfordern</span></button>
 
 <dialog class="callback" data-callback aria-labelledby="cb-title">
-  <form class="callback__box" data-callback-form novalidate onsubmit="return false">
+  <form class="callback__box" data-callback-form novalidate>
     <button class="callback__close" type="button" data-callback-close aria-label="Schließen"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
     <p class="eyebrow">Rückruf-Service</p>
     <h2 id="cb-title">Wir rufen Sie zurück.</h2>

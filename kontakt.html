@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <link rel="stylesheet" href="assets/css/features.css">
-<script>document.documentElement.className += ' js';</script>
+<script src="assets/js/init.js"></script>
 <!-- /partial:head -->
 <title>Kontakt &amp; Angebot anfragen | GNZ Immobilien-Komplettservice</title>
 <meta name="description" content="Angebot anfragen in vier Schritten: Leistung wählen, Objekt beschreiben, Kontaktdaten angeben – wir melden uns zeitnah zur kostenlosen Besichtigung. Telefon, E-Mail und WhatsApp möglich.">
@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://gnz-komplettservice.netlify.app/assets/img/photos/pflaster-kopfstein-hell-1600.jpg">
 <!-- seo:end -->
+
 
 
 
@@ -173,7 +174,7 @@
 
       <div class="reveal">
         <noscript><div class="note"><span>Für den Anfrage-Assistenten wird JavaScript benötigt. Bitte rufen Sie uns an oder schreiben Sie uns eine E-Mail – die Kontaktdaten finden Sie rechts.</span></div></noscript>
-        <form class="wizard slab form" data-wizard novalidate onsubmit="return false">
+        <form class="wizard slab form" data-wizard novalidate>
 
           <ol class="stepper" data-stepper aria-label="Fortschritt der Anfrage">
             <li data-n="1"><span>Leistung</span></li>
@@ -379,7 +380,7 @@
 <button class="fab" type="button" data-fab data-open-callback><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Rückruf anfordern</span></button>
 
 <dialog class="callback" data-callback aria-labelledby="cb-title">
-  <form class="callback__box" data-callback-form novalidate onsubmit="return false">
+  <form class="callback__box" data-callback-form novalidate>
     <button class="callback__close" type="button" data-callback-close aria-label="Schließen"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
     <p class="eyebrow">Rückruf-Service</p>
     <h2 id="cb-title">Wir rufen Sie zurück.</h2>

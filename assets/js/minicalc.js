@@ -35,7 +35,7 @@
 
     root.className = (root.className ? root.className + ' ' : '') + 'calc';
     root.innerHTML =
-      '<form class="calc__form slab form" novalidate onsubmit="return false">' +
+      '<form class="calc__form slab form" novalidate>' +
         '<fieldset class="fs"><legend>Wie groß ist die Fläche?<small>Eine ungefähre Angabe genügt – gemessen wird bei der Besichtigung.</small></legend>' +
           '<div class="calc__area"><input class="range" type="range" data-mc-range min="' + C.min + '" max="' + C.max + '" step="' + C.step + '" value="' + C.start + '" aria-label="Fläche in Quadratmetern, Schieberegler">' +
           '<div class="num"><label class="visually-hidden" for="' + aid + '">Fläche in Quadratmetern</label><input class="input" id="' + aid + '" type="number" inputmode="decimal" min="1" max="100000" step="1" value="' + C.start + '"> <span aria-hidden="true">m²</span></div></div></fieldset>' +

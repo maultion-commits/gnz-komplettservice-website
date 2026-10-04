@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <link rel="stylesheet" href="assets/css/features.css">
-<script>document.documentElement.className += ' js';</script>
+<script src="assets/js/init.js"></script>
 <!-- /partial:head -->
 <title>Preisrechner – Richtwert für Pflaster, Wand &amp; Industrieboden | GNZ Immobilien-Komplettservice</title>
 <meta name="description" content="Grober Richtwert in Sekunden: Pflasterreinigung, Neuverfugung, Imprägnierung, Wandreinigung und Industrieboden-Reinigung nach Fläche berechnen. Das verbindliche Festpreis-Angebot folgt nach der kostenlosen Besichtigung.">
@@ -24,6 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://gnz-komplettservice.netlify.app/assets/img/photos/pflaster-beton-1600.jpg">
 <!-- seo:end -->
+
 
 
 
@@ -182,7 +183,7 @@
         <div role="tabpanel" id="panel-pflaster" aria-labelledby="tab-pflaster" tabindex="0">
           <div class="calc" data-calc>
 
-            <form class="calc__form slab form reveal" novalidate onsubmit="return false">
+            <form class="calc__form slab form reveal" novalidate>
               <fieldset class="fs">
                 <legend>Wie groß ist die Fläche?<small>Eine ungefähre Angabe genügt – gemessen wird bei der Besichtigung.</small></legend>
                 <div class="calc__area">
@@ -353,7 +354,7 @@
 <button class="fab" type="button" data-fab data-open-callback><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Rückruf anfordern</span></button>
 
 <dialog class="callback" data-callback aria-labelledby="cb-title">
-  <form class="callback__box" data-callback-form novalidate onsubmit="return false">
+  <form class="callback__box" data-callback-form novalidate>
     <button class="callback__close" type="button" data-callback-close aria-label="Schließen"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
     <p class="eyebrow">Rückruf-Service</p>
     <h2 id="cb-title">Wir rufen Sie zurück.</h2>

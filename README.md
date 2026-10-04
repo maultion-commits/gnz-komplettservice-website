@@ -86,13 +86,43 @@ Der Ordner ist direkt hostbar (Netlify, GitHub Pages, Shared Hosting). Die Datei
 4. `404.html` nutzt `<base href="/">` – das funktioniert, wenn die Seite im Wurzelverzeichnis der Domain liegt (bei Netlify der Fall).
 5. Impressum und Datenschutzerklärung vollständig ausfüllen und rechtlich prüfen lassen.
 
+## Sicherheit
+
+Die Website ist statisch (kein Server-Code, keine Datenbank, keine Formular-Backends, keine Cookies) – die Angriffsfläche ist klein.
+Zusätzlich gilt eine strenge **Content-Security-Policy** (Datei `_headers`, von Netlify als HTTP-Header ausgeliefert):
+
+| Maßnahme | Wirkung |
+|---|---|
+| `script-src 'self'` | nur eigene Skriptdateien; **keine** Inline-Skripte, Inline-Event-Handler, `eval` oder Fremd-Skripte → XSS wird praktisch wirkungslos |
+| `style-src 'self'` + `style-src-attr 'unsafe-inline'` | keine `<style>`-Blöcke und keine Fremd-Stile; nur Inline-Style-*Attribute* (für die Einblend-Verzögerungen u. Ä.) |
+| `img-src 'self' data:` · `font-src`/`connect-src 'self'` | keine Bilder, Schriften oder Verbindungen zu Dritten |
+| `object-src 'none'` · `frame-src 'none'` · `base-uri 'self'` · `form-action 'self'` | keine Plug-ins, Frames, Basis-URL-Tricks oder Formular-Umleitungen |
+| `frame-ancestors 'none'` + `X-Frame-Options: DENY` | die Seite lässt sich nicht in fremde Seiten einbetten (Clickjacking-Schutz) |
+| `X-Content-Type-Options: nosniff` · `Referrer-Policy: no-referrer` · `Cross-Origin-Opener-Policy: same-origin` | kein MIME-Sniffing, kein Referrer-Versand, Isolation des Fensters |
+| `Permissions-Policy` | Kamera, Mikrofon, Standort, Zahlung, USB u. a. sind abgeschaltet |
+| HSTS | setzt Netlify bei aktivem HTTPS automatisch (nicht doppelt in `_headers` eintragen) |
+
+**Regeln für Änderungen:** Skripte nur als Datei unter `assets/js/` einbinden (keine `<script>`-Blöcke, keine `onclick=`/`onsubmit=`),
+keine Ressourcen von fremden Servern laden, Eingaben und URL-Parameter nur per `textContent`/`value` ausgeben und nie in Selektoren oder `innerHTML` einsetzen.
+Ob alles eingehalten wird, prüft
+
+```bash
+node tools/security-check.mjs   # läuft außerdem automatisch bei node tools/build-dist.mjs (bei Verstoß kein Build)
+```
+
+Hinweise:
+* **Hotlink-Modus für Fotos** (`"mode": "remote"`) funktioniert mit dieser CSP nicht, weil `img-src` fremde Bildserver sperrt – lokal speichern (`node tools/download-photos.mjs`).
+* Netlify blendet auf veröffentlichten Seiten eigene Plattform-Elemente ein (kleines Badge unten rechts). Diese brauchen Inline-Code und werden von der CSP deshalb blockiert (Konsolenhinweise, Badge unsichtbar). Die CSP dafür zu lockern wird nicht empfohlen.
+* Beim Wechsel auf eine eigene Domain: HTTPS/HSTS in Netlify prüfen; eine `/.well-known/security.txt` (RFC 9116) mit echter Kontaktadresse ergänzen.
+* Konten absichern: Zwei-Faktor-Anmeldung für GitHub und Netlify aktivieren.
+
 ## Technik im Überblick
 
 * **`assets/js/paving.js`** – prozedurales Pflaster (Canvas): Reihen-, Läufer- und Fischgrätverband, Stein- und Fugenfarben, verschmutzter und sauberer Zustand. Treibt Simulator, Regler und Konfigurator – ohne Bilddateien.
 * **Zustandscheck / Rechner / Anfrage-Assistent / Rückruf / Tipps** – reine Browser-Logik; es wird nichts an einen Server gesendet. Anfrage und Rückruf erzeugen einen Text für `mailto:`, WhatsApp (`wa.me`) oder die Zwischenablage.
 * **Barrierefreiheit** – Skip-Link, Landmarken, sichtbarer Fokus, Tastaturbedienung (Menü, Tabs, Dialog, Lightbox, Regler), `aria-live` bei Ergebnissen, `prefers-reduced-motion`; die Kontrastwerte der Hauptfarben sind nach WCAG AA geprüft.
 * **Responsiv** – geprüft von 320 bis 1440 px, auch mit breiter Ersatzschrift; mobile Aktionsleiste (Anrufen · Rückruf · WhatsApp · Angebot).
-* **Datenschutz** – keine Cookies, kein Tracking, keine Webfonts vom CDN, keine Drittanbieter-Bilder.
+* **Datenschutz & Sicherheit** – keine Cookies, kein Tracking, keine Webfonts vom CDN, keine Drittanbieter-Bilder; strenge Content-Security-Policy (siehe oben).
 
 ## Lizenzhinweis
 

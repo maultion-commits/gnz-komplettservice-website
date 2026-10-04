@@ -113,7 +113,7 @@
     var wanted = q.get('s').split(',');
     qsa('input[name="svc"]').forEach(function (i) { i.checked = wanted.indexOf(i.value) > -1; });
   }
-  if (q.get('m')) { var m = qs('input[name="mat"][value="' + q.get('m') + '"]'); if (m) m.checked = true; }
+  if (q.get('m')) { var wantedMat = q.get('m'); qsa('input[name="mat"]').forEach(function (i) { if (i.value === wantedMat) i.checked = true; }); }
   if (q.get('z')) { var z = qs('input[name="zus"][value="' + q.get('z') + '"]'); if (z) z.checked = true; }
   if (q.get('a')) { var av = parseFloat(q.get('a')); if (isFinite(av) && av > 0) { area.value = av; range.value = Math.min(+range.max, av); } }
 

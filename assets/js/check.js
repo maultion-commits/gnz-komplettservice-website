@@ -255,7 +255,7 @@
 
   // Direkteinstieg per URL, z. B. zustandscheck.html?thema=wand
   var pre = new URLSearchParams(window.location.search).get('thema');
-  if (pre) { var el = form.querySelector('input[name="topic"][value="' + pre + '"]'); if (el) el.checked = true; }
+  if (pre) qsa('input[name="topic"]', form).forEach(function (i) { if (i.value === pre) i.checked = true; });
 
   show(0);
 })();

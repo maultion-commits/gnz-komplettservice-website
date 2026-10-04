@@ -249,4 +249,7 @@
   initHeader();
   initDraft();
   initReveal();
+
+  /* ---------- Formulare: nie abschicken (Auswertung läuft vollständig im Browser) ---------- */
+  document.addEventListener('submit', function (e) { e.preventDefault(); });
 })();

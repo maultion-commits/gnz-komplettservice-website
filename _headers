@@ -2,8 +2,12 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: no-referrer
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# Strict-Transport-Security (HSTS) setzt Netlify bei aktivem HTTPS selbst (netlify.app und eigene Domains) – hier bewusst nicht doppelt gesetzt.
 
 /assets/img/*
   Cache-Control: public, max-age=2592000
