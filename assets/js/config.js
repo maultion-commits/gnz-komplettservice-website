@@ -54,6 +54,31 @@ GNZ.config = {
       drain:   [14, 22],
       epoxid:  [22, 34]
     },
-    impraegnierung: [3.5, 6.5]
+    impraegnierung: [3.5, 6.5],
+
+    // Mini-Rechner auf den Seiten "Wandreinigung" und "Industrieboden" (Beispielwerte! € pro m² als [von, bis])
+    industrie: {
+      min: 50, max: 10000, step: 50, start: 500, minimumOrder: 290,
+      options: [
+        { id: 'unterhalt', label: 'Maschinelle Unterhaltsreinigung', hint: 'je Einsatz, mit Scheuersaugmaschine', range: [0.4, 1.1] },
+        { id: 'grund', label: 'Grundreinigung', hint: 'Einwirkzeit, maschinell schrubben, absaugen', range: [1.8, 4.5] },
+        { id: 'entfetten', label: 'Entfetten / Ölspuren entfernen', hint: 'Heißwasser-Hochdruck mit Absaugung', range: [3.5, 8.5] }
+      ],
+      zustand: { leicht: 0.85, normal: 1, stark: 1.4 }
+    },
+    wand: {
+      min: 10, max: 1500, step: 10, start: 120, minimumOrder: 190,
+      options: [
+        { id: 'innen-trocken', label: 'Innenwand trocken reinigen', hint: 'Rußschwamm, Staub, leichte Verschmutzung', range: [1.5, 3.5] },
+        { id: 'innen-feucht', label: 'Innenwand feucht / Fliesen', hint: 'bei waschbeständiger Oberfläche, mit Dampf möglich', range: [2.5, 5.5] },
+        { id: 'fassade', label: 'Fassade (Niederdruck / Heißwasser)', hint: 'Putz, Klinker, Beton – Algen und Grünbelag', range: [4.5, 10], access: true }
+      ],
+      zustand: { leicht: 0.85, normal: 1, stark: 1.35 },
+      zugang: {
+        boden: { label: 'Vom Boden erreichbar', f: 1 },
+        leiter: { label: 'Leiter / Teleskoplanze', f: 1.2 },
+        hoehe: { label: 'Hubsteiger oder Gerüst nötig', f: 1.6 }
+      }
+    }
   }
 };

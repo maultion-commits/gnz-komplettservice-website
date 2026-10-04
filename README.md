@@ -22,6 +22,7 @@ python -m http.server 8805      # oder: npx serve
 |---|---|
 | `index.html` | Hero mit **Tageszeit-Begrüßung**, Online-Werkzeuge, Schwerpunkte, **Reinigungs-Simulator**, **Vorher/Nachher-Regler**, Fugen-Teaser, Komplettservice, Ablauf, **„Persönlich für Sie da“**, Galerie-Teaser, **Pflege-Tipp des Monats** (mit jährlicher **Kalender-Erinnerung**), FAQ |
 | `pflasterreinigung.html` · `spezialfugung.html` · `sanierung.html` | Schwerpunkte (Spezialfugung mit **Fugen-Konfigurator**, Sanierung mit Entscheidungstabelle) |
+| `innenreinigung.html` · `wandreinigung.html` · `industrieboden.html` | **Gebäudereinigung**: Innenraum (mit **Reinigungsplan-Planer**), Wände & Fassaden (mit **Verfahrens-Finder** und **Richtwert-Rechner**), Industrieböden (mit **Richtwert-Rechner**) |
 | `raeumung-abriss-transport.html` · `gartenservice.html` · `hausmeisterservice.html` | Zusatzleistungen (Garten mit **Gartenjahr-Tabs**, Hausmeister mit **Betreuungsplan-Planer**) |
 | `pflaster-check.html` | **Pflaster-Check**: 3 Fragen → Empfehlung (Reinigung / Neuverfugung / Sanierung + Fugenmaterial) |
 | `rechner.html` | **Preisrechner** (Richtwert-Spanne, druckbar / als PDF speicherbar) |

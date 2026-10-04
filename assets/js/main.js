@@ -149,7 +149,11 @@
         var m = document.getElementById(btn.getAttribute('aria-controls'));
         var wasOpen = btn.getAttribute('aria-expanded') === 'true';
         closeMega();
-        if (!wasOpen && m) { btn.setAttribute('aria-expanded', 'true'); m.hidden = false; }
+        if (!wasOpen && m) {
+          btn.setAttribute('aria-expanded', 'true'); m.hidden = false;
+          var br = btn.getBoundingClientRect(), mr = m.getBoundingClientRect();
+          m.style.setProperty('--caret', (br.left - mr.left + br.width / 2) + 'px');
+        }
         e.stopPropagation();
       });
     });

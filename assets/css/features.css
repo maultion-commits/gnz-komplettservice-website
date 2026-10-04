@@ -337,4 +337,15 @@ input[type="range"].range::-moz-range-thumb { width: 1.4rem; height: 1.4rem; bor
   [data-calc-cta], [data-print] { display: none !important; }
 }
 
+/* ---------- Wand-Verfahrensfinder ---------- */
+.finder { display: grid; align-items: start; gap: 10px; }
+@media (min-width: 900px) { .finder { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } }
+.finder > * { min-width: 0; }
+.finder .form { gap: 1.2rem; }
+.slab--dark .label { color: #fff; }
+.finder__result { display: grid; justify-items: start; gap: .8rem; }
+.finder__result h3 { margin: .2rem 0 0; font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem); }
+.finder__result p { margin: 0; color: var(--ink-2); }
+.finder__result .note { width: 100%; }
+
 /* @@APPEND@@
